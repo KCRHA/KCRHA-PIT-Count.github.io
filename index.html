@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Point-in-Time Count | Volunteer Portal</title>
+    <style>
+        /* CSS STYLING */
+        :root {
+            --primary-blue: #172B69;
+            --accent-teal: #1B8477;
+            --light-gray: #f4f7f9;
+            --text-dark: #333333;
+        }
+
+        body {
+            font-family: 'Arial Nova', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        /* Navigation Tabs */
+        nav {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid var(--light-gray);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        nav button:hover {
+            color: var(--accent-teal);
+        }
+
+        nav button.active {
+            border-bottom: 4px solid var(--accent-teal);
+            color: var(--accent-teal);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Professional Buttons */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-teal);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        /* Resource Index Styling */
+        .resource-card {
+            background: var(--light-gray);
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .resource-card h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+            background: var(--light-gray);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>2026 Point-in-Time Count</h1>
+    <p>Community Effort to End Homelessness</p>
+</header>
+
+<nav id="main-nav">
+    <button class="tab-link active" onclick="openTab(event, 'home')">Home</button>
+    <button class="tab-link" onclick="openTab(event, 'resources')">Volunteer Resources</button>
+</nav>
+
+<div class="container">
+    
+    <div id="home" class="tab-content active">
+        <h2>About the PIT Count</h2>
+        <p>The Point-in-Time (PIT) count is a count of sheltered and unsheltered people experiencing homelessness on a single night in January. Your participation helps secure vital funding and resources for our community.</p>
+        
+        <div style="background-color: #eef2ff; padding: 1.5rem; border-radius: 8px; border: 1px solid #d1d9e6;">
+            <h3 style="color: var(--primary-blue); margin-top: 0;">Event Details</h3>
+            <p><strong>Date:</strong> January 22, 2026</p>
+            <p><strong>Location:</strong> Regional Deployment Centers</p>
+            <a href="#" class="cta-button">Register to Volunteer</a>
+        </div>
+    </div>
+
+    <div id="resources" class="tab-content">
+        <h2>Volunteer Resource Index</h2>
+        <p>Access the training materials and documents required for your deployment.</p>
+
+        <div class="resource-card">
+            <h3>1. Mandatory Training</h3>
+            <p>Watch our 2026 Orientation Video and download the safety protocol handbook.</p>
+            <a href="#" style="color: var(--accent-teal); font-weight: bold;">Watch Video →</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>2. Data Collection Tools</h3>
+            <p>Instructions for using the mobile surveying app and paper backup forms.</p>
+            <a href="#" style="color: var(--accent-teal); font-weight: bold;">Download Guide (PDF) →</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>3. Deployment Maps</h3>
+            <p>View your assigned census tracks and staging locations.</p>
+            <a href="#" style="color: var(--accent-teal); font-weight: bold;">Access Maps →</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2026 Organization Name | Point-in-Time Count Initiative
+</footer>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>

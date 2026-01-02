@@ -113,13 +113,18 @@
             background: var(--light-gray);
             margin-top: 4rem;
         }
-        .viz-container {
+        .tableau-container {
             width: 100%;
-            min-height: 600px; /* Adjust based on your dashboard height */
-            margin: 2rem 0;
+            margin-top: 20px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background: white;
+        }
+        
+        /* Adjusts the container width for the map */
+        #maps.tab-content {
+            max-width: 100%;
         }
     </style>
 </head>
@@ -134,6 +139,7 @@
 <nav id="main-nav">
     <button class="tab-link active" onclick="openTab(event, 'home')">Home</button>
     <button class="tab-link" onclick="openTab(event, 'resources')">Volunteer Resources</button>
+    <button class="tab-link" onclick="openTab(event, 'maps')">Service Maps</button>
 </nav>
 
 <div class="container">
@@ -173,20 +179,18 @@
             <h3>Hub Site and Other Location Information</h3>
             <p>View all Assigned Hub Sites and Staging Locations.</p>
             <a href="#" style="color: var(--accent-teal); font-weight: bold;">Regional Hub Site Map →</a>
-        </div>
-    </div>
-
-    <div id="map" class="tab-content">
-        <h2>Hub Site Map</h2>
-        <p>Map of the hub sites, with contacts and schedules where available.</p>
-        <div class="viz-container">
+        </div><div id="maps" class="tab-content">
+        <h2>Service Providing Programs & HUB Sites</h2>
+        <p>Use the interactive map below to locate regional resources and deployment hubs.</p>
+        
+        <div class="tableau-container">
             <div class='tableauPlaceholder' id='viz1767396745342' style='position: relative'>
                 <noscript>
                     <a href='#'>
                         <img alt='Service Providing Programs and HUB Sites' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Su&#47;SubregionalShelterMapKingCounty-withHUBSites&#47;ServiceProvidingProgramsandHUBSites&#47;1_rss.png' style='border: none' />
                     </a>
                 </noscript>
-                <object class='tableauViz'  style='display:none;'>
+                <object class='tableauViz' style='display:none;'>
                     <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
                     <param name='embed_code_version' value='3' /> 
                     <param name='site_root' value='' />
@@ -201,9 +205,16 @@
                     <param name='display_count' value='yes' />
                     <param name='language' value='en-US' />
                 </object>
-            </div>
-            <script type='text/javascript'>
-                var divElement = document.getElementById('viz1767396745342');var vizElement = divElement.getElementsByTagName('object')[0];if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1200px';vizElement.style.height='1227px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1200px';vizElement.style.height='1227px';} else { vizElement.style.width='100%';vizElement.style.height='2027px';} var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement); 
+            </div>                
+            <script type='text/javascript'>                    
+                var divElement = document.getElementById('viz1767396745342');                    
+                var vizElement = divElement.getElementsByTagName('object')[0];                    
+                if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height='800px';} 
+                else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height='800px';} 
+                else { vizElement.style.width='100%';vizElement.style.height='1200px';}                     
+                var scriptElement = document.createElement('script');                    
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);                
             </script>
         </div>
     </div>

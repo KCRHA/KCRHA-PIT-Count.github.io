@@ -113,6 +113,14 @@
             background: var(--light-gray);
             margin-top: 4rem;
         }
+        .viz-container {
+            width: 100%;
+            min-height: 600px; /* Adjust based on your dashboard height */
+            margin: 2rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
@@ -146,7 +154,7 @@
         <p>Access training materials and documents.</p>
 
         <div class="resource-card">
-            <h3>1. Volunteer Training Materials</h3>
+            <h3>Volunteer Training Materials</h3>
             <p>Watch our 2026 Orientation Video and download the volunteer handbook.</p>
             <a href="2026 Volunteer Training Manual_Final.pdf" style="color: var(--accent-teal); font-weight: bold;">Download Volunteer Handbook →</a>
             <br>
@@ -154,19 +162,51 @@
         </div>
 
         <div class="resource-card">
-            <h3>2. Survey Data Collection Tools</h3>
+            <h3>Survey Data Collection Tools</h3>
             <p>Instructions for using the mobile surveying app and paper backup forms.</p>
             <a href="#" style="color: var(--accent-teal); font-weight: bold;">User Guide (PDF) →</a>
+            <br>
             <a href="#" style="color: var(--accent-teal); font-weight: bold;">Jeannie Translation Services →</a>
         </div>
 
         <div class="resource-card">
-            <h3>3. Hub Site and Other Location Information</h3>
+            <h3>Hub Site and Other Location Information</h3>
             <p>View all Assigned Hub Sites and Staging Locations.</p>
             <a href="#" style="color: var(--accent-teal); font-weight: bold;">Regional Hub Site Map →</a>
         </div>
     </div>
 
+    <div id="map" class="tab-content">
+        <h2>Hub Site Map</h2>
+        <p>Map of the hub sites, with contacts and schedules where available.</p>
+        <div class="viz-container">
+            <div class='tableauPlaceholder' id='viz1767396745342' style='position: relative'>
+                <noscript>
+                    <a href='#'>
+                        <img alt='Service Providing Programs and HUB Sites' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Su&#47;SubregionalShelterMapKingCounty-withHUBSites&#47;ServiceProvidingProgramsandHUBSites&#47;1_rss.png' style='border: none' />
+                    </a>
+                </noscript>
+                <object class='tableauViz'  style='display:none;'>
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                    <param name='embed_code_version' value='3' /> 
+                    <param name='site_root' value='' />
+                    <param name='name' value='SubregionalShelterMapKingCounty-withHUBSites&#47;ServiceProvidingProgramsandHUBSites' />
+                    <param name='tabs' value='no' />
+                    <param name='toolbar' value='yes' />
+                    <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Su&#47;SubregionalShelterMapKingCounty-withHUBSites&#47;ServiceProvidingProgramsandHUBSites&#47;1.png' /> 
+                    <param name='animate_transition' value='yes' />
+                    <param name='display_static_image' value='yes' />
+                    <param name='display_spinner' value='yes' />
+                    <param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' />
+                    <param name='language' value='en-US' />
+                </object>
+            </div>
+            <script type='text/javascript'>
+                var divElement = document.getElementById('viz1767396745342');var vizElement = divElement.getElementsByTagName('object')[0];if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1200px';vizElement.style.height='1227px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1200px';vizElement.style.height='1227px';} else { vizElement.style.width='100%';vizElement.style.height='2027px';} var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement); 
+            </script>
+        </div>
+    </div>
 </div>
 
 <footer>

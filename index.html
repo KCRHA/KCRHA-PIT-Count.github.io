@@ -114,15 +114,16 @@
             margin-top: 4rem;
         }
         
-        .tableau-container {
-            width: 100%;
-            overflow: auto; /* Adds a scrollbar if the dashboard is wider than the screen */
-            -webkit-overflow-scrolling: touch;
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: auto;
+            background-color: #ffffff;
         }
-        
-        /* Find your .container class and add this below it */
-        #maps.tab-content {
-            max-width: 1250px; /* Gives the dashboard room to breathe */
+        /* Forces the container to maintain the desktop aspect ratio */
+        .viz-container {
+            width: 1200px;
             margin: 0 auto;
         }
     </style>
@@ -178,12 +179,11 @@
     <div id="maps" class="tab-content">
         <h2>Service Providing Programs & HUB Sites</h2>
         <p>Use the interactive map below to locate regional resources and deployment hubs.</p>
-        
-        <div class="tableau-container">
-            <div class='tableauPlaceholder' id='viz1767396745342' style='position: relative'>
+        <div class="viz-container">
+            <div class='tableauPlaceholder' id='viz1767400899531' style='position: relative'>
                 <noscript>
-                    <a href='Service Providing Programs and HUB Sites' src='https://public.tableau.com/views/SubregionalShelterMapKingCounty-withHUBSites/ServiceProvidingProgramsandHUBSites?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'>
-                        <img alt='Service Providing Programs and HUB Sites' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Su&#47;SubregionalShelterMapKingCounty-withHUBSites&#47;ServiceProvidingProgramsandHUBSites&#47;1.png' style='border: none' />
+                    <a href='#'>
+                        <img alt='Service Providing Programs and HUB Sites ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Su&#47;SubregionalShelterMapKingCounty-withHUBSites&#47;ServiceProvidingProgramsandHUBSites&#47;1_rss.png' style='border: none' />
                     </a>
                 </noscript>
                 <object class='tableauViz' style='display:none;'>
@@ -200,13 +200,18 @@
                     <param name='display_overlay' value='yes' />
                     <param name='display_count' value='yes' />
                     <param name='language' value='en-US' />
+                    <param name='device' value='desktop' />
                 </object>
             </div>                
+            
             <script type='text/javascript'>                    
-                var divElement = document.getElementById('viz1767396745342');                    
+                var divElement = document.getElementById('viz1767400899531');                    
                 var vizElement = divElement.getElementsByTagName('object')[0];                    
-                vizElement.style.minWidth = '1200px';
+                
+                // Hardcoding width and height to 1200x1227 to bypass the responsive logic
+                vizElement.style.width = '1200px';
                 vizElement.style.height = '1227px';                    
+                
                 var scriptElement = document.createElement('script');                    
                 scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
                 vizElement.parentNode.insertBefore(scriptElement, vizElement);                

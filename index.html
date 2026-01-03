@@ -113,20 +113,18 @@
             background: var(--light-gray);
             margin-top: 4rem;
         }
+        
         .tableau-container {
             width: 100%;
-            margin-top: 20px;
-            border-radius: 8px;
-            overflow-x: auto;
+            overflow-x: auto; /* Adds a scrollbar if the dashboard is wider than the screen */
             -webkit-overflow-scrolling: touch;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            background: white;
         }
         
-        /* /* Adjusts the container width for the map */
-        /* #maps.tab-content {
-            max-width: 100%;
-        } */
+        /* Find your .container class and add this below it */
+        #maps.tab-content {
+            max-width: 1250px; /* Gives the dashboard room to breathe */
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>

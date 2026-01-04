@@ -20,7 +20,6 @@ Contains links (redirect to new tab) to
   </li>
 </ul>
 <br>
-<br>
 <strong>Volunteer Services</strong>
 Contains links which redirect to supporting documentation for training and site operations
 <br>
@@ -31,6 +30,7 @@ Embedded
   Google Map of Hub Sites
 </a>
 , allowing for easy interface between location and directions for the user.
+
 
 
 

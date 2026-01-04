@@ -113,6 +113,22 @@
             background: var(--light-gray);
             margin-top: 4rem;
         }
+        /* This makes the map look great on mobile and desktop */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
     </style>
 </head>
 <body>
@@ -166,7 +182,8 @@
     <div id="maps" class="tab-content">
         <h2>Service Providing Programs & HUB Sites</h2>
         <p>Use the interactive map below to locate regional resources and deployment hubs.</p>
-        <div class="viz-container">
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1pR8ll32bitMux9RBMqWjToCY1oDPiug&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
         </div>
     </div>
 </div>

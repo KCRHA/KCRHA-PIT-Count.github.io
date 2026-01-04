@@ -4,7 +4,7 @@
 Hosts the Javascript, HTML, and CSS scripts for the PIT Count volunteer coordination and communication website. Inlcudes selected branding resources.
 
 ---
-<strong>Home</strong>
+<strong><a href="https://kcrha.github.io/KCRHA-PIT-Count.github.io/#home" target="_blank">Home</a></strong>
 
 Contains links (redirect to new tab) to
 <ul>
@@ -20,16 +20,17 @@ Contains links (redirect to new tab) to
   </li>
 </ul>
 <br>
-<strong>Volunteer Services</strong>
+<strong><a href="https://kcrha.github.io/KCRHA-PIT-Count.github.io/#resources" target="_blank">Volunteer Services</a></strong>
 Contains links which redirect to supporting documentation for training and site operations
 <br>
 <br>
-<strong>Hub Sites (Interactive Map)</strong>
+<strong><a href="https://kcrha.github.io/KCRHA-PIT-Count.github.io/#maps" target="_blank">Hub Sites (Interactive Map)</a></strong>
 Embedded 
 <a href="https://www.google.com/maps/d/u/0/viewer?mid=1pR8ll32bitMux9RBMqWjToCY1oDPiug&femb=1&ll=47.43966724377141%2C-122.1546841328124&z=11" target="_blank">
   Google Map of Hub Sites
 </a>
 , allowing for easy interface between location and directions for the user.
+
 
 
 

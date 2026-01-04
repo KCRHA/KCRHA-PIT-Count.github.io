@@ -1,7 +1,7 @@
 # KCRHA-PIT-Count.github.io
 Hosts the code PIT Count volunteer coordination and communication website.
 ---
-<em>Home</em>
+<strong>Home</strong>
 
 Contains links (redirect to new tab) to
 <ul>
@@ -16,3 +16,4 @@ Contains links (redirect to new tab) to
     </a>
   </li>
 </ul>
+

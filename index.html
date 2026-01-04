@@ -146,6 +146,13 @@
     <button class="tab-link" onclick="openTab(event, 'maps')">Hub Sites (Interactive Map)</button>
 </nav>
 
+/* Ensure the URL updates to reflect tab selection */
+<ul class="nav">
+  <li><a href="#home" class="tab-link">Home</a></li>
+  <li><a href="#resources" class="tab-link">Volunteer Resources</a></li>
+  <li><a href="#maps" class="tab-link">Hub Sites (Interactive Map)</a></li>
+</ul>
+
 <div class="container">
     
     <div id="home" class="tab-content active">
@@ -195,48 +202,6 @@
 <footer>
     &copy; King County Regional Homelessness Authority (KCRHA) | 2026 Point-in-Time Count
 </footer>
-
-<script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tab-link");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-</script>
-    function activateTab() {
-    const hash = window.location.hash; // e.g., "#about"
-    if (hash) {
-        // 1. Hide all content sections
-        document.querySelectorAll('.tab-content').forEach(content => {
-            content.style.display = 'none';
-        });
-
-        // 2. Show the content matching the hash
-        const activeSection = document.querySelector(hash);
-        if (activeSection) {
-            activeSection.style.display = 'block';
-        }
-
-        // 3. (Optional) Update active class on the tab button
-        document.querySelectorAll('.tab-link').forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === hash);
-        });
-    }
-}
-
-// Listen for hash changes (when user clicks a link)
-window.addEventListener('hashchange', activateTab);
-
-// Run once when the page first loads
-window.addEventListener('DOMContentLoaded', activateTab);
 
 </body>
 </html>

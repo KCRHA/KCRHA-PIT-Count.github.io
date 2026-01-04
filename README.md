@@ -1,4 +1,4 @@
-(KCRHA-PIT-Count.github.io)[https://kcrha.github.io/KCRHA-PIT-Count.github.io/#home]
+# [KCRHA-PIT-Count.github.io](https://kcrha.github.io/KCRHA-PIT-Count.github.io/#home)
 ---
 Hosts the code PIT Count volunteer coordination and communication website.
 ---
@@ -27,6 +27,7 @@ Embedded
   Google Map of Hub Sites
 </a>
 , allowing for easy interface between location and directions for the user.
+
 
 
 

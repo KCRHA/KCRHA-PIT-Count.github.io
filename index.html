@@ -327,8 +327,12 @@
 
             const text = await response.text();
 
-            // Convert Markdown to HTML using Marked.js
-            container.innerHTML = marked.parse(text);
+            // Create a timestamp string
+            const now = new Date().toLocaleString(); 
+            const stamp = `<p style="font-size: 0.8rem; color: gray;">Last checked: ${now}</p>`;
+        
+            // Inject the stamp + the converted Markdown
+            container.innerHTML = stamp + marked.parse(text);
         } catch (error) {
             container.innerHTML = "<p>Error loading documentation.</p>";
             console.error(error);

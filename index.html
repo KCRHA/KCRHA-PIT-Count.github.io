@@ -317,24 +317,86 @@
 </footer>
 
 <script>
-    // For importing the 'notifications.md' and conversion to HTML
-    function refreshNotifications() {
-        // Note the .md extension
-        const notificationUrl = "https://github.com/KCRHA/KCRHA-PIT-Count.github.io/blob/main/notifications.md";
-        const freshUrl = `${notificationUrl}?t=${new Date().getTime()}`;
-    
-        fetch(freshUrl)
-            .then(response => response.text()) // Use .text() instead of .json()
-            .then(markdownText => {
-                const container = document.getElementById('notifications-section');
-                // Use the Marked library to turn MD into HTML
-                container.innerHTML = marked.parse(markdownText);
-            })
-            .catch(error => {
-                console.error("Error loading notifications:", error);
-            });
+    // Add script to convert markdown (updates and notifications) to HTML on the fly
+    async function loadMarkdown() {
+        const container = document.getElementById('markdown-container');
+        try {
+            // This adds a timestamp to the URL, making the browser think it's a brand new file
+            const response = await fetch('notifications.md?t=' + new Date().getTime());
+            if (!response.ok) throw new Error('Failed to load notifications');
+
+            const text = await response.text();
+
+            // Convert Markdown to HTML using Marked.js
+            container.innerHTML = marked.parse(text);
+        } catch (error) {
+            container.innerHTML = "<p>Error loading documentation.</p>";
+            console.error(error);
+        }
     }
-    window.addEventListener('DOMContentLoaded', refreshNotifications);
+    // function to handle tab behavior for UI
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+
+        // 1. Hide all tab content
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
+
+        // 2. Deactivate all tab buttons
+        tablinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+
+        // 3. Show the current tab and add an "active" class
+        const selectedTab = document.getElementById(tabName);
+        if (selectedTab) {
+            selectedTab.style.display = "block";
+            selectedTab.classList.add("active");
+        }
+
+        // 4. Highlight the button
+        if (evt) {
+            evt.currentTarget.classList.add("active");
+        } else {
+            // If triggered by URL (no event), find the button by text or index
+            Array.from(tablinks).forEach(btn => {
+                if (btn.getAttribute('onclick').includes(tabName)) {
+                    btn.classList.add("active");
+                }
+            });
+        }
+
+        // Set special behavior for the notifications and updates tab
+        if (id === 'markdown-container') {
+            loadMarkdown();
+        }
+
+        // 5. UPDATE THE URL
+        window.location.hash = tabName;
+    }
+
+    // Handle Direct Links (e.g., someone visits yoursite.com/#resources)
+    window.addEventListener('DOMContentLoaded', () => {
+        const currentHash = window.location.hash.replace('#', '');
+        if (currentHash) {
+            openTab(null, currentHash);
+        }
+    });
+
+    // Handle Back/Forward buttons in the browser
+    window.addEventListener('hashchange', () => {
+        const currentHash = window.location.hash.replace('#', '');
+        if (currentHash) {
+            openTab(null, currentHash);
+        }
+    });
+
+    // Trigger the load when the page starts
+    window.addEventListener('DOMContentLoaded', loadMarkdown);
 </script>
 
 </body>

@@ -4,6 +4,6 @@
 
 Please check the [site schedule calendar](https://kcrha.github.io/KCRHA-PIT-Count.github.io/#schedule) for scheduled activity by site.
 
-## Checking in on Arrival
+## TEST for Update Refresh
 
-Be sure to check in with your Site Lead upon arrival.
+If you can read this, then we have successfully moved current updates from a tab to a section.

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 Point-in-Time Count | Volunteer Portal</title>
     <link rel="icon" type="image/x-icon" href="KCRHA-logo-brandmark-full-color.png">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         /* CSS STYLING */
         :root {
@@ -150,6 +151,62 @@
             border: 1px solid #ccc;
             border-radius: 8px;
         }
+        
+        /* Styling for Markdown-injected content */
+        #markdown-container {
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        
+        #markdown-container h1, 
+        #markdown-container h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 0.3rem;
+            margin-top: 1.5rem;
+        }
+        
+        #markdown-container h3 {
+            color: var(--accent-teal);
+        }
+        
+        #markdown-container ul, 
+        #markdown-container ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        #markdown-container li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Style for links inside markdown */
+        #markdown-container a {
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        #markdown-container a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Style for code blocks or technical instructions */
+        #markdown-container code {
+            background-color: var(--light-gray);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+        
+        #markdown-container blockquote {
+            border-left: 4px solid var(--accent-teal);
+            margin: 1.5rem 0;
+            padding: 0.5rem 1rem;
+            background: #f9fdfc;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -162,6 +219,7 @@
 
 <nav id="main-nav">
     <button class="tab-link active" onclick="openTab(event, 'home')">Home</button>
+    <button class="tab-link" onclick="openTab(event, 'notifications')">Updates and Notifications</button>
     <button class="tab-link" onclick="openTab(event, 'resources')">Volunteer Resources</button>
     <button class="tab-link" onclick="openTab(event, 'maps')">Hub Sites Map</button>
     <button class="tab-link" onclick="openTab(event, 'schedule')">Volunteer and Site Schedules</button>
@@ -179,6 +237,14 @@
             <a href="https://rds-test-bwdfb4akakaugcc9.westus2-01.azurewebsites.net/login" class="cta-button" target="_blank">PIT 2026 Survey Tool (Login)</a>
             <br>
             <a href="https://app.jeenie.com/v3/login?utm_source=google&utm_medium=cpc&utm_term=jeenie%20interpreter" class="cta-button" target="_blank">Jeenie Translation Services (Login)</a>
+        </div>
+    </div>
+
+    <!-- Add tab for Daily Updates and Notifications -->
+    <div id="markdown-tab" class="tab-content">
+        <h2>Daily Updates and Notifications</h2>
+        <div id="markdown-container" class="resource-card">
+            Loading content...
         </div>
     </div>
 
@@ -230,6 +296,24 @@
 </footer>
 
 <script>
+    // Add script to convert markdown (updates and notifications) to HTML on the fly
+    async function loadMarkdown() {
+        const container = document.getElementById('markdown-container');
+        try {
+            // Replace 'your-file.md' with the actual path to your file in the repo
+            const response = await fetch('notifications.md'); 
+            if (!response.ok) throw new Error('Failed to load notifications');
+            
+            const text = await response.txt();
+            
+            // Convert Markdown to HTML using Marked.js
+            container.innerHTML = marked.parse(text);
+        } catch (error) {
+            container.innerHTML = "<p>Error loading documentation.</p>";
+            console.error(error);
+        }
+    }
+    // function to handle tab behavior for UI
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
         
@@ -264,7 +348,12 @@
                 }
             });
         }
-    
+
+        // Set special behavior for the notifications and updates tab
+        if (tabName === 'markdown-tab') {
+            loadMarkdown();
+        }
+        
         // 5. UPDATE THE URL
         window.location.hash = tabName;
     }
@@ -284,6 +373,9 @@
             openTab(null, currentHash);
         }
     });
+    
+    // Trigger the load when the page starts
+    window.addEventListener('DOMContentLoaded', loadMarkdown);
 </script>
 
 </body>

@@ -124,7 +124,7 @@
             height: 100%;
             overflow: auto;
         }
-        
+        /* Control the style of the map widget */
         .map-container iframe {
             position: absolute;
             top: 0;
@@ -132,6 +132,23 @@
             width: 100%;
             height: 100%;
             border: 0;
+        }
+        /* Control the style of the calendar widget */
+        .calendar-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 75%; /* Maintains a nice aspect ratio on mobile */
+            height: 0;
+        }
+        
+        .calendar-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -147,6 +164,7 @@
     <button class="tab-link active" onclick="openTab(event, 'home')">Home</button>
     <button class="tab-link" onclick="openTab(event, 'resources')">Volunteer Resources</button>
     <button class="tab-link" onclick="openTab(event, 'maps')">Hub Sites (Interactive Map)</button>
+    <button class="tab-link" onclick="openTab(event, 'schedule')">Site Schedule(s)</button>
 </nav>
 
 <div class="container">
@@ -186,12 +204,23 @@
             <a href="2026 Unsheltered PIT CountHUB Leads and Surveyor Volunteer Training_final.pdf" style="color: var(--accent-teal); font-weight: bold;" target="_blank">Training Slides →</a> 
         </div>
     </div>
-        
+
+    <!-- Add Google map of Hub Sites for ease of navigation -->
     <div id="maps" class="tab-content">
         <h2>HUB Site Map</h2>
         <p>Use the interactive map below to locate regional resources and deployment hubs.</p>
         <div class="map-container">
             <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1pR8ll32bitMux9RBMqWjToCY1oDPiug&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
+        </div>
+    </div>
+
+    <!-- Add Google calendar for site schedule mgmt -->
+    <div id="schedule" class="tab-content">
+        <h2>Volunteer Schedule</h2>
+        <p>View upcoming PIT Count training sessions and deployment shifts below.</p>
+        
+        <div class="calendar-container">
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FLos_Angeles&showPrint=0&src=Y19hMzBkOTUzYjQ3NTE3ZDgzNzQxMTI2ZjJlMTgwNWIxNTEwMTI2OWRmYWI4Y2QxMWFkMDg1M2M1NGMyYjk2NTRkQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%234285f4" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
     </div>
 </div>

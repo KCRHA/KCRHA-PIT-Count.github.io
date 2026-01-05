@@ -221,7 +221,6 @@
 
 <nav id="main-nav">
     <button class="tab-link active" onclick="openTab(event, 'home')">Home</button>
-    <!-- <button class="tab-link" onclick="openTab(event, 'notifications')">Notifications</button> -->
     <button class="tab-link" onclick="openTab(event, 'resources')">Resources</button>
     <button class="tab-link" onclick="openTab(event, 'maps')">Hub Sites Map</button>
     <button class="tab-link" onclick="openTab(event, 'schedule')">Site Schedules</button>
@@ -235,14 +234,17 @@
             <br>
             <br>
             Your participation is essential to our ability to gain the insights and funding needed to bring our neighbors indoors and bring our Homelessness Response System (HRS) to functional ZERO.</p>
+        <!-- -->
+        <!-- Link to section within the page without modifying the URL -->
+        <a href="javascript:void(0)" 
+           onclick="document.getElementById('notifications-section').scrollIntoView({behavior: 'smooth'})" 
+           class="cta-button">
+           <i>Check Notifications</i>
+        </a>
+        <!-- -->
         <div style="background-color: #eef2ff; padding: 1.5rem; border-radius: 8px; border: 1px solid #d1d9e6;">
             <h2 style="color: var(--primary-blue); margin-top: 0;"><u><b>Event Details</b></u></h2>
-            <!-- Link to section within the page without modifying the URL -->
-            <a href="javascript:void(0)" 
-               onclick="document.getElementById('notifications-section').scrollIntoView({behavior: 'smooth'})" 
-               class="cta-button">
-               <i>Check Notifications</i>
-            </a>
+            <br>
             <p><strong>2026 Unsheltered PIT Count data collection is scheduled for:<br></strong> Monday – Friday, January 26 through February 6, 2026 (weather permitting).</p>
             <p><strong>Location:</strong><br><a href="https://kcrha.github.io/KCRHA-PIT-Count.github.io/#maps" target="_blank">Regional HUB Sites</a></p>
             <a href="https://rds-test-bwdfb4akakaugcc9.westus2-01.azurewebsites.net/login" class="cta-button" target="_blank">PIT 2026 Survey Tool (Login)</a>
@@ -257,14 +259,6 @@
             </div>
         </section>
     </div>
-
-    <!-- Add tab for Updates and Notifications
-    <div id="notifications" class="tab-content">
-        <h2>Updates and Notifications</h2>
-        <div id="markdown-container" class="resource-card">
-            Loading content...
-        </div>
-    </div> -->
 
     <div id="resources" class="tab-content">
         <h2>Volunteer and Site Management Resources</h2>

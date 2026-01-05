@@ -237,7 +237,7 @@
             Your participation is essential to our ability to gain the insights and funding needed to bring our neighbors indoors and bring our Homelessness Response System (HRS) to functional ZERO.</p>
         <div style="background-color: #eef2ff; padding: 1.5rem; border-radius: 8px; border: 1px solid #d1d9e6;">
             <h2 style="color: var(--primary-blue); margin-top: 0;"><u><b>Event Details</b></u></h2>
-            <a href="#alert" class="cta-button"><i>Check Notifications</i></a>
+            <a href="#notifications-section" class="cta-button"><i>Check Notifications</i></a>
             <p><strong>2026 Unsheltered PIT Count data collection is scheduled for:<br></strong> Monday – Friday, January 26 through February 6, 2026 (weather permitting).</p>
             <p><strong>Location:</strong><br><a href="https://kcrha.github.io/KCRHA-PIT-Count.github.io/#maps" target="_blank">Regional HUB Sites</a></p>
             <a href="https://rds-test-bwdfb4akakaugcc9.westus2-01.azurewebsites.net/login" class="cta-button" target="_blank">PIT 2026 Survey Tool (Login)</a>
@@ -245,7 +245,7 @@
             <a href="https://app.jeenie.com/v3/login?utm_source=google&utm_medium=cpc&utm_term=jeenie%20interpreter" class="cta-button" target="_blank">Jeenie Translation Services (Login)</a>
         </div>
         <br>
-        <section id="notifications" style="background-color: #eef2ff; padding: 1.5rem; border-radius: 8px; border: 1px solid #d1d9e6;">
+        <section id="notifications-section" style="background-color: #eef2ff; padding: 1.5rem; border-radius: 8px; border: 1px solid #d1d9e6;">
             <h2 style="color: var(--primary-blue); margin-top: 0;"><u><b>Updates and Notifications</b></u></h2>
             <div id="markdown-container" class="resource-card">
                 Loading content...
@@ -317,86 +317,24 @@
 </footer>
 
 <script>
-    // Add script to convert markdown (updates and notifications) to HTML on the fly
-    async function loadMarkdown() {
-        const container = document.getElementById('markdown-container');
-        try {
-            // This adds a timestamp to the URL, making the browser think it's a brand new file
-            const response = await fetch('notifications.md?t=' + new Date().getTime());
-            if (!response.ok) throw new Error('Failed to load notifications');
-            
-            const text = await response.text();
-            
-            // Convert Markdown to HTML using Marked.js
-            container.innerHTML = marked.parse(text);
-        } catch (error) {
-            container.innerHTML = "<p>Error loading documentation.</p>";
-            console.error(error);
-        }
-    }
-    // function to handle tab behavior for UI
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        
-        // 1. Hide all tab content
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-            tabcontent[i].classList.remove("active");
-        }
-        
-        // 2. Deactivate all tab buttons
-        tablinks = document.getElementsByClassName("tab-link");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("active");
-        }
-        
-        // 3. Show the current tab and add an "active" class
-        const selectedTab = document.getElementById(tabName);
-        if (selectedTab) {
-            selectedTab.style.display = "block";
-            selectedTab.classList.add("active");
-        }
+    // For importing the 'notifications.md' and conversion to HTML
+    function refreshNotifications() {
+        // Note the .md extension
+        const notificationUrl = "https://github.com/KCRHA/KCRHA-PIT-Count.github.io/blob/main/notifications.md";
+        const freshUrl = `${notificationUrl}?t=${new Date().getTime()}`;
     
-        // 4. Highlight the button
-        if (evt) {
-            evt.currentTarget.classList.add("active");
-        } else {
-            // If triggered by URL (no event), find the button by text or index
-            Array.from(tablinks).forEach(btn => {
-                if (btn.getAttribute('onclick').includes(tabName)) {
-                    btn.classList.add("active");
-                }
+        fetch(freshUrl)
+            .then(response => response.text()) // Use .text() instead of .json()
+            .then(markdownText => {
+                const container = document.getElementById('notifications-section');
+                // Use the Marked library to turn MD into HTML
+                container.innerHTML = marked.parse(markdownText);
+            })
+            .catch(error => {
+                console.error("Error loading notifications:", error);
             });
-        }
-
-        // Set special behavior for the notifications and updates tab
-        if (tabName === 'notifications') {
-            loadMarkdown();
-        }
-        
-        // 5. UPDATE THE URL
-        window.location.hash = tabName;
     }
-    
-    // Handle Direct Links (e.g., someone visits yoursite.com/#resources)
-    window.addEventListener('DOMContentLoaded', () => {
-        const currentHash = window.location.hash.replace('#', '');
-        if (currentHash) {
-            openTab(null, currentHash);
-        }
-    });
-    
-    // Handle Back/Forward buttons in the browser
-    window.addEventListener('hashchange', () => {
-        const currentHash = window.location.hash.replace('#', '');
-        if (currentHash) {
-            openTab(null, currentHash);
-        }
-    });
-    
-    // Trigger the load when the page starts
-    window.addEventListener('DOMContentLoaded', loadMarkdown);
+    window.addEventListener('DOMContentLoaded', refreshNotifications);
 </script>
 
 </body>

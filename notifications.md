@@ -10,4 +10,4 @@ If you can read this, then we have successfully moved current updates from a tab
 
 ---
 Emoji test: Failed!
-LaTeX test: $/sqrt(36)=6^1$
+LaTeX test: $\sqrt(36)=6^1$

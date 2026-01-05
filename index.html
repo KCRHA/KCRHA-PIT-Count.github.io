@@ -329,7 +329,7 @@
 
             // Create a timestamp string
             const now = new Date().toLocaleString(); 
-            const stamp = `<p style="font-size: 0.8rem; color: gray;">Last checked: ${now}</p>`;
+            const stamp = `<p style="font-size: 1.0rem; color: #333333;">Last updated: ${now}</p>`;
         
             // Inject the stamp + the converted Markdown
             container.innerHTML = stamp + marked.parse(text);

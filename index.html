@@ -300,8 +300,8 @@
     async function loadMarkdown() {
         const container = document.getElementById('markdown-container');
         try {
-            // Replace 'your-file.md' with the actual path to your file in the repo
-            const response = await fetch('notifications.md'); 
+            // This adds a timestamp to the URL, making the browser think it's a brand new file
+            const response = await fetch('notifications.md?t=' + new Date().getTime());
             if (!response.ok) throw new Error('Failed to load notifications');
             
             const text = await response.text();

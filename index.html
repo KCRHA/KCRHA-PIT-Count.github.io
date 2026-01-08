@@ -59,30 +59,56 @@
             cursor: pointer;
             transition: 0.3s;
         }
-
+        
         nav button:hover {
             color: var(--accent-teal);
             background-color: var(--text-white);
         }
-
+        
         nav button.active {
             border-bottom: 4px solid var(--text-dark);
             background-color: var(--accent-teal);
             color: var(--text-white);
         }
-
         .container {
             max-width: 900px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
-
         .tab-content {
             display: none;
         }
-
         .tab-content.active {
             display: block;
+        }
+        
+        /* Apply these to all links and buttons in the nav */
+        .tab-link {
+            display: inline-block; /* Crucial for links to accept padding/height */
+            text-decoration: none; /* Removes the underline from the <a> tag */
+            appearance: none;      /* Removes default browser button styling */
+            cursor: pointer;
+            
+            /* Ensure these match your existing button styles */
+            padding: 1rem 2rem;
+            border: none; 
+            background-color: none;
+            color: var(--text-white);
+            font-family: inherit;
+            font-size: 1rem;
+            vertical-align: middle; /* Keeps text aligned with adjacent buttons */
+            line-height: normal;    /* Prevents height mismatch */
+        }
+        
+        /* Match the hover state of your existing buttons */
+        .tab-link:hover {
+            color: var(--accent-teal);
+            background-color: var(--text-white);
+        }
+        
+        /* Optional: Subtle distinction for the ICE link so it stands out as an external resource */
+        .ice-link {
+            border-left: 3px solid #b30000; /* Red indicator for urgent protocol */
         }
 
         /* Professional Buttons */
@@ -224,7 +250,7 @@
     <button class="tab-link" onclick="openTab(event, 'resources')">Resources</button>
     <button class="tab-link" onclick="openTab(event, 'maps')">Hub Sites Map</button>
     <button class="tab-link" onclick="openTab(event, 'schedule')">Site Schedules</button>
-    <a href="ice_response.html" target="_blank" class="nav">ICE Response Protocol</a>
+    <a href="ice_response.html" target="_blank" class="tab-link ice-link">ICE Response Protocol</a>
 </nav>
 
 <div class="container">

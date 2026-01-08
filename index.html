@@ -329,7 +329,7 @@
         
         try {
             // Fetches the html file you created
-            const response = await fetch('ice-protocol.html');
+            const response = await fetch('ice_response.html');
             
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -346,11 +346,10 @@
             container.innerHTML = bodyContent;
             
         } catch (error) {
-            container.innerHTML = "<p style='color:red;'>Error loading protocol: Please ensure ice-protocol.html exists in your repository.</p>";
+            container.innerHTML = "<p style='color:red;'>Error loading protocol: Please ensure ice_response.html exists in your repository.</p>";
             console.error('Fetch error:', error);
         }
     }
-    </script>
     // Add script to convert markdown (updates and notifications) to HTML on the fly
     async function loadMarkdown() {
         const container = document.getElementById('markdown-container');

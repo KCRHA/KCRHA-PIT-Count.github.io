@@ -75,6 +75,20 @@
         @media (max-width: 600px) {
             .container { padding: 20px; }
         }
+        .download-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #2e7d32; /* Green for "Download/Success" */
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            border: none;
+            transition: background-color 0.2s;
+        }
+        .download-button:hover {
+            background-color: #1b5e20;
+        }
     </style>
 </head>
 <body>
@@ -83,9 +97,22 @@
     <h1>Volunteer Protocol: ICE Encounters</h1>
     <p><strong>2026 King County Point-in-Time (PIT) Count</strong><br>
     <em>Scope: Jan 26 – Feb 6, 2026</em></p>
+    <br>
+    // Insert download button for WA AG guidance flyer
+    <div class="resource-download">
+        <h3>Official State Guidance</h3>
+        <p>Download the Washington State Attorney General's official flyer to keep on your device or print for fieldwork.</p>
+        
+        <a href="https://agportal-s3bucket.s3.us-west-2.amazonaws.com/KnowYourRightsFlier%20Civil%20Immigration%20Enforcement.pdf" 
+           target="_blank" 
+           class="download-button"
+           download>
+           📥 Download WA Attorney General KYR Flyer (PDF)
+        </a>
+    </div>
 
     <div class="alert-box">
-        <strong>CRITICAL:</strong> Under the <em>Keep Washington Working Act</em> and King County policy, you are protected when refusing to assist with federal civil immigration enforcement.
+        <strong>CRITICAL:</strong> Under the <em><a href="https://agportal-s3bucket.s3.us-west-2.amazonaws.com/KnowYourRightsFlier%20Civil%20Immigration%20Enforcement.pdf?VersionId=xYvCQ3UtJdBHeXf7npHeQbdIZNpF4X6y" target="_blank">Keep Washington Working Act</a></em> and King County policy, you are protected when refusing to assist with federal civil immigration enforcement.
     </div>
 
     <h2>1. Immediate Response</h2>

@@ -224,7 +224,7 @@
     <button class="tab-link" onclick="openTab(event, 'resources')">Resources</button>
     <button class="tab-link" onclick="openTab(event, 'maps')">Hub Sites Map</button>
     <button class="tab-link" onclick="openTab(event, 'schedule')">Site Schedules</button>
-    <button onclick="loadProtocol()">ICE Response Protocol</button>
+    <button href="ice_response.html">ICE Response Protocol</button>
 </nav>
 
 <div class="container">
@@ -310,11 +310,6 @@
             <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FLos_Angeles&mode=WEEK&showTabs=0&showPrint=0&showCalendars=0&showTz=0&src=Y19hMzBkOTUzYjQ3NTE3ZDgzNzQxMTI2ZjJlMTgwNWIxNTEwMTI2OWRmYWI4Y2QxMWFkMDg1M2M1NGMyYjk2NTRkQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%234285f4" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
     </div>
-
-    <!-- Add page of instructions on handling ICE visits -->
-    <div id="protocol-container" class="content-tab">
-      <p>Select the tab to load the protocol guidelines...</p>
-    </div>
 </div>
 
 <footer>
@@ -322,33 +317,6 @@
 </footer>
 
 <script>
-    // Script to convert '.html' docs to webtext
-    async function loadProtocol() {
-        const container = document.getElementById('protocol-container');
-        
-        try {
-            // Fetches the html file you created
-            const response = await fetch('ice_response.html');
-            
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            
-            const htmlContent = await response.text();
-            
-            // Use DOMParser to extract only the contents of the <body> tag 
-            // to avoid nesting <html> and <head> tags inside your div
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(htmlContent, 'text/html');
-            const bodyContent = doc.querySelector('.container').innerHTML;
-            
-            container.innerHTML = bodyContent;
-            
-        } catch (error) {
-            container.innerHTML = "<p style='color:red;'>Error loading protocol: Please ensure ice_response.html exists in your repository.</p>";
-            console.error('Fetch error:', error);
-        }
-    }
     // Add script to convert markdown (updates and notifications) to HTML on the fly
     async function loadMarkdown() {
         const container = document.getElementById('markdown-container');

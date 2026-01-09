@@ -437,9 +437,11 @@
             // 3. Refresh the Calendar Iframe
             iframe.src = "about:blank"; 
             setTimeout(function() {
-                var embedUrl = "https://calendar.google.com/calendar/embed?src=" + 
-                               encodeURIComponent(calendarId) + 
-                               "&ctz=America%2FLos_Angeles&mode=WEEK&showTitle=0&showPrint=0&showTabs=0";
+                var embedUrl = "https://calendar.google.com/calendar/embed?src=" +
+                    encodeURIComponent(calendarId) +
+                    "&ctz=America%2FLos_Angeles&mode=WEEK" +
+                    "&dates=20260126/20260127" + // Adjust these dates for each week (Monday/Tuesday)
+                    "&showTitle=0&showPrint=0&showTabs=0";
                 iframe.src = embedUrl;
             }, 10);
         }

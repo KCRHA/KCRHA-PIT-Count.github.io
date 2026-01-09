@@ -432,6 +432,7 @@
             
             // 1. Show the section
             container.style.display = 'block';
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
             
             // 2. Update the Button link and text
             bookingBtn.href = doodleUrl;
@@ -443,7 +444,7 @@
                 var embedUrl = "https://calendar.google.com/calendar/embed?src=" +
                     encodeURIComponent(calendarId) +
                     "&ctz=America%2FLos_Angeles&mode=WEEK" +
-                    "&dates=20260126/20260127" + // Adjust these dates for each week (Monday/Tuesday)
+                    "&dates=20260126/20260201" + // Adjust these dates for each week
                     "&showTitle=0&showPrint=0&showTabs=0";
                 iframe.src = embedUrl;
             }, 10);

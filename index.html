@@ -161,20 +161,21 @@
         /* Control the style of the calendar widget */
         .calendar-container {
             position: relative;
-            overflow: hidden;
+            overflow: auto;
             width: 100%;
-            height: 600px
-            /* padding-top: 75%; /* Maintains a nice aspect ratio on mobile */ */
+            height: 600px; 
             border: 1px solid #ccc;
             border-radius: 8px;
+            background-color: #fff; /* Prevents seeing the page background through the load */
         }
         
         .calendar-container iframe {
             position: absolute;
             top: 0;
             left: 0;
-            width: 97%;
-            height: 97%;
+            width: 100%; 
+            height: 100%;
+            border: none; 
         }
         
         /* Styling for Markdown-injected content */

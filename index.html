@@ -374,7 +374,7 @@
             <!-- Add Doodle sign-up links and labels here -->
             <select id="region-menu" class="styled-select">
                 <option value="" disabled selected>— Choose a Region —</option>
-                <option value="https://doodle.com/sign-up-sheet/participate/9535c4a5-ddad-477c-94f9-3db163170ee0/select" data-cal="7cf70fbad7720637d804d101ad577937d04f33867b6ee59a3e28a1070741901b@group.calendar.google.com">North King County</option>]
+                <option value="https://doodle.com/sign-up-sheet/participate/9535c4a5-ddad-477c-94f9-3db163170ee0/select" data-cal="7cf70fbad7720637d804d101ad577937d04f33867b6ee59a3e28a1070741901b@group.calendar.google.com">North King County</option>
                 <option value="https://doodle.com/sign-up-sheet/participate/91369666-53b7-4d1e-8d15-b34cae226bad/select" data-cal="8a55c1d6ff5d1361170f4dfe1165593ed09f206cc9907058ac3baba0a7030246@group.calendar.google.com">South King County</option>
             </select>
             <p class="helper-text">Links will open in a new tab.</p>
@@ -403,29 +403,22 @@
             var container = document.getElementById('calendar-container');
             var iframe = document.getElementById('calendar-iframe');
             
-            // 1. Unhide the container first
+            // 1. Unhide the container
             container.style.display = 'block';
             
-            // 2. Clear the old SRC to "kick" the browser into a fresh load
+            // 2. Refresh the iframe with the new calendar
             iframe.src = "about:blank"; 
-            
-            // 3. Set the new URL with King County Timezone (America/Los_Angeles)
-            // Note: Using a timeout of 10ms ensures the 'about:blank' clears the cache first
             setTimeout(function() {
                 var embedUrl = "https://calendar.google.com/calendar/embed?src=" + 
                                encodeURIComponent(calendarId) + 
                                "&ctz=America%2FLos_Angeles&showTitle=0&showPrint=0";
                 iframe.src = embedUrl;
             }, 10);
-    
-            document.getElementById('booking-button').href = doodleUrl;
-        }
-    };
-    // Listen for the dropdown to change
-    document.getElementById('region-menu').onchange = function() {
-        var url = this.value;
-        if (url) {
-            window.open(url, '_blank'); // Opens in new tab
+
+            // 3. Open the Doodle link in a NEW tab
+            if (doodleUrl) {
+                window.open(doodleUrl, '_blank');
+            }
         }
     };
     // Add script to convert markdown (updates and notifications) to HTML on the fly

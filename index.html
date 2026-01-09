@@ -164,10 +164,6 @@
             overflow: hidden;
             width: 100%;
             /* padding-top: 75%; /* Maintains a nice aspect ratio on mobile */ */
-            height: 600px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            margin-bottom: 20px;
         }
         
         .calendar-container iframe {
@@ -176,7 +172,8 @@
             left: 0;
             width: 97%;
             height: 97%;
-            border: none; /* Container will handle the border */
+            border: 1px solid #ccc;
+            border-radius: 8px;
         }
         
         /* Styling for Markdown-injected content */
@@ -406,7 +403,7 @@
         </div>
         
         <!-- Display the calendar that corresponds to the selected subregion -->
-        <div id="calendar-container" style="margin-top: 20px; display: none;">
+        <div id="calendar" style="margin-top: 20px; display: none;">
             <h4>Live Schedule View</h4>
             <div class="calendar-container">
                 <iframe id="calendar-iframe" src="" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
@@ -428,7 +425,7 @@
         var regionName = selectedOption.text; // Gets the name like "North King County"
         
         if (calendarId) {
-            var container = document.getElementById('calendar-container');
+            var container = document.getElementById('calendar');
             var iframe = document.getElementById('calendar-iframe');
             var bookingBtn = document.getElementById('booking-button');
             

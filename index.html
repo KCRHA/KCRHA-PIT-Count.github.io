@@ -418,6 +418,10 @@
             // 3. Open the Doodle link in a NEW tab
             if (doodleUrl) {
                 window.open(doodleUrl, '_blank');
+                
+                // 3. Focus back on the current window (The "Stay" logic)
+                // Note: This works best if the user has clicked or interacted with the page
+                window.focus();
             }
         }
     };

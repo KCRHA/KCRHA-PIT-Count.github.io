@@ -270,6 +270,21 @@
             color: #002b5c;
             background: #f0f0f0;
         }
+
+        /* Format the button that redirects to Doodle sign-up */
+        .button-center-wrapper {
+            display: flex;
+            justify-content: center; /* Horizontal centering */
+            align-items: center;     /* Vertical alignment */
+            padding: 20px 0;         /* Adds breathing room above and below */
+            width: 100%;
+        }
+        
+        /* Optional: Ensure the button doesn't get too wide on mobile */
+        #booking-button {
+            max-width: 90%;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -381,9 +396,11 @@
         </div>
 
         <!-- Add a button to navigate to the Doodle sign-up -->
-        <a id="booking-button" href="#" target="_blank" class="cta-button" style="margin-bottom: 20px; background-color: var(--accent-teal);">
-            Take me to the Sign-Up Page
-        </a>
+        <div class="button-center-wrapper">
+            <a id="booking-button" href="#" target="_blank" class="cta-button">
+                Take me to the Sign-Up Page
+            </a>
+        </div>
         
         <!-- Display the calendar that corresponds to the selected subregion -->
         <div id="calendar-container" style="margin-top: 20px; display: none;">

@@ -162,8 +162,12 @@
         .calendar-container {
             position: relative;
             overflow: hidden;
-            padding-top: 75%; /* Maintains a nice aspect ratio on mobile */
-            height: 0;
+            width: 100%;
+            /* padding-top: 75%; /* Maintains a nice aspect ratio on mobile */ */
+            height: 600px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
         }
         
         .calendar-container iframe {
@@ -172,8 +176,7 @@
             left: 0;
             width: 97%;
             height: 97%;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            border: none; /* Container will handle the border */
         }
         
         /* Styling for Markdown-injected content */

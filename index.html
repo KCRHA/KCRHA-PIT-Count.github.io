@@ -379,6 +379,11 @@
             </select>
             <p class="helper-text">Links will open in a new tab.</p>
         </div>
+
+        <!-- Add a button to navigate to the Doodle sign-up -->
+        <a id="booking-button" href="#" target="_blank" class="cta-button" style="margin-bottom: 20px; background-color: var(--accent-teal);">
+            Take me to the Sign-Up Page
+        </a>
         
         <!-- Display the calendar that corresponds to the selected subregion -->
         <div id="calendar-container" style="margin-top: 20px; display: none;">
@@ -398,31 +403,28 @@
         var selectedOption = this.options[this.selectedIndex];
         var doodleUrl = selectedOption.value;
         var calendarId = selectedOption.getAttribute('data-cal');
+        var regionName = selectedOption.text; // Gets the name like "North King County"
         
         if (calendarId) {
             var container = document.getElementById('calendar-container');
             var iframe = document.getElementById('calendar-iframe');
+            var bookingBtn = document.getElementById('booking-button');
             
-            // 1. Unhide the container
+            // 1. Show the section
             container.style.display = 'block';
             
-            // 2. Refresh the iframe with the new calendar
+            // 2. Update the Button link and text
+            bookingBtn.href = doodleUrl;
+            bookingBtn.innerText = "Sign Up for " + regionName + " on Doodle";
+            
+            // 3. Refresh the Calendar Iframe
             iframe.src = "about:blank"; 
             setTimeout(function() {
                 var embedUrl = "https://calendar.google.com/calendar/embed?src=" + 
                                encodeURIComponent(calendarId) + 
-                               "&ctz=America%2FLos_Angeles&showTitle=0&showPrint=0";
+                               "&ctz=America%2FLos_Angeles&showTitle=0&showPrint=0&showTabs=0";
                 iframe.src = embedUrl;
             }, 10);
-
-            // 3. Open the Doodle link in a NEW tab
-            if (doodleUrl) {
-                window.open(doodleUrl, '_blank');
-                
-                // 3. Focus back on the current window (The "Stay" logic)
-                // Note: This works best if the user has clicked or interacted with the page
-                window.focus();
-            }
         }
     };
     // Add script to convert markdown (updates and notifications) to HTML on the fly

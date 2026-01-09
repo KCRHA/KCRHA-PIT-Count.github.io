@@ -400,14 +400,24 @@
         var calendarId = selectedOption.getAttribute('data-cal');
         
         if (calendarId) {
-            // 1. Show the container
-            document.getElementById('calendar-container').style.display = 'block';
+            var container = document.getElementById('calendar-container');
+            var iframe = document.getElementById('calendar-iframe');
             
-            // 2. Update the Iframe SRC (Standard Google Embed URL format)
-            var embedUrl = "https://calendar.google.com/calendar/embed?src=" + encodeURIComponent(calendarId) + "&ctz=America%2FLos_Angeles";
-            document.getElementById('calendar-iframe').src = embedUrl;
+            // 1. Unhide the container first
+            container.style.display = 'block';
             
-            // 3. Update the button for the Doodle page
+            // 2. Clear the old SRC to "kick" the browser into a fresh load
+            iframe.src = "about:blank"; 
+            
+            // 3. Set the new URL with King County Timezone (America/Los_Angeles)
+            // Note: Using a timeout of 10ms ensures the 'about:blank' clears the cache first
+            setTimeout(function() {
+                var embedUrl = "https://calendar.google.com/calendar/embed?src=" + 
+                               encodeURIComponent(calendarId) + 
+                               "&ctz=America%2FLos_Angeles&showTitle=0&showPrint=0";
+                iframe.src = embedUrl;
+            }, 10);
+    
             document.getElementById('booking-button').href = doodleUrl;
         }
     };

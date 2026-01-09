@@ -231,6 +231,45 @@
             background: #f9fdfc;
             font-style: italic;
         }
+
+        /* Style for Subregion dropdown selector */
+        .schedule-selector {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 30px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+        }
+    
+        .styled-select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #002b5c; /* King County Blue */
+            border-radius: 4px;
+            background-color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    
+        .styled-select:hover {
+            background-color: #f9f9f9;
+        }
+    
+        .helper-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 15px;
+            font-style: italic;
+        }
+    
+        optgroup {
+            font-weight: bold;
+            color: #002b5c;
+            background: #f0f0f0;
+        }
     </style>
 </head>
 <body>
@@ -328,8 +367,24 @@
         <h2>Volunteer/ Site Schedules</h2>
         <p>View upcoming PIT Count training sessions and deployment shifts below.</p>
         
-        <div class="calendar-container">
-            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FLos_Angeles&mode=WEEK&showTabs=0&showPrint=0&showCalendars=0&showTz=0&src=Y19hMzBkOTUzYjQ3NTE3ZDgzNzQxMTI2ZjJlMTgwNWIxNTEwMTI2OWRmYWI4Y2QxMWFkMDg1M2M1NGMyYjk2NTRkQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%234285f4" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        <!-- Create the Subregion selector -->
+        <div class="schedule-selector">
+            <h3>Find Your Region</h3>
+            <p>Select a region below to view available shifts and site schedules:</p>
+            
+            <select id="region-menu" class="styled-select">
+                <option value="" disabled selected>— Choose a Region —</option>
+                
+                <optgroup label="North King County">
+                    <option value="https://doodle.com/sign-up-sheet/participate/9535c4a5-ddad-477c-94f9-3db163170ee0/select">North King County Sites</option>
+                </optgroup>
+                
+                <optgroup label="South King County">
+                    <option value="https://doodle.com/sign-up-sheet/participate/91369666-53b7-4d1e-8d15-b34cae226bad/select">South King County Sites</option>
+                </optgroup>
+            </select>
+            
+            <p class="helper-text">Links will open in a new tab.</p>
         </div>
     </div>
 </div>
@@ -339,6 +394,13 @@
 </footer>
 
 <script>
+    // Listen for the dropdown to change
+    document.getElementById('region-menu').onchange = function() {
+        var url = this.value;
+        if (url) {
+            window.open(url, '_blank'); // Opens in new tab
+        }
+    };
     // Add script to convert markdown (updates and notifications) to HTML on the fly
     async function loadMarkdown() {
         const container = document.getElementById('markdown-container');
@@ -359,7 +421,7 @@
             container.innerHTML = "<p>Error loading documentation.</p>";
             console.error(error);
         }
-    }
+    };
     // function to handle tab behavior for UI
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;

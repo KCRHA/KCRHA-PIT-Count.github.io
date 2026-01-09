@@ -371,13 +371,19 @@
             <h3>Select a Subregion</h3>
             <p>Select a region below to view available shifts and site schedules:</p>
             
+            <!-- Add Doodle sign-up links and labels here -->
             <select id="region-menu" class="styled-select">
                 <option value="" disabled selected>— Choose a Region —</option>
                 <option value="https://doodle.com/sign-up-sheet/participate/9535c4a5-ddad-477c-94f9-3db163170ee0/select">North King County</option>]
                 <option value="https://doodle.com/sign-up-sheet/participate/91369666-53b7-4d1e-8d15-b34cae226bad/select">South King County</option>
             </select>
-            
             <p class="helper-text">Links will open in a new tab.</p>
+
+            <!-- Display the calendar that corresponds to the selected subregion -->
+            <div id="calendar-container" style="margin-top: 20px; display: none;">
+                <h4>Live Schedule View</h4>
+                <iframe id="calendar-iframe" src="" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
         </div>
     </div>
 </div>
@@ -387,6 +393,24 @@
 </footer>
 
 <script>
+    // This script changes the embedded calendar when the subregion is changed
+    document.getElementById('region-menu').onchange = function() {
+        var selectedOption = this.options[this.selectedIndex];
+        var doodleUrl = selectedOption.value;
+        var calendarId = selectedOption.getAttribute('data-cal');
+        
+        if (calendarId) {
+            // 1. Show the container
+            document.getElementById('calendar-container').style.display = 'block';
+            
+            // 2. Update the Iframe SRC (Standard Google Embed URL format)
+            var embedUrl = "https://calendar.google.com/calendar/embed?src=" + encodeURIComponent(calendarId) + "&ctz=America%2FLos_Angeles";
+            document.getElementById('calendar-iframe').src = embedUrl;
+            
+            // 3. Update the button for the Doodle page
+            document.getElementById('booking-button').href = doodleUrl;
+        }
+    };
     // Listen for the dropdown to change
     document.getElementById('region-menu').onchange = function() {
         var url = this.value;

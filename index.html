@@ -399,36 +399,36 @@
             <select id="region-menu" class="styled-select">
                 <option value="" disabled selected>— Choose a Region —</option>
                 <option value=""
-                    coord-name="Cathea Carey"
-                    coord-phone="206-809-5711"
+                    data-name="Cathea Carey"
+                    data-phone="206-809-5711"
                     data-cal="">Downtown Seattle</option>
                 <option value=""
-                    coord-name="Claire Guilmette"
-                    coord-phone="206-735-6448"
+                    data-name="Claire Guilmette"
+                    data-phone="206-735-6448"
                     data-cal="">East King County</option>
                 <option value="https://doodle.com/sign-up-sheet/participate/9535c4a5-ddad-477c-94f9-3db163170ee0/select"
                     data-cal="a3f1e80ae158552e9e17bd597d4ef472304659b41f880baedf07ef0dd008f696@group.calendar.google.com">North King County</option>
                 <option value=""
-                    coord-name="Joel Bernstein"
-                    coord-phone="206-771-2097"
+                    data-name="Joel Bernstein"
+                    data-phone="206-771-2097"
                     data-cal="">North King County</option>
                 <option value=""
-                    coord-name="Ewan Andreasen"
-                    coord-phone="206-681-5536"
+                    data-name="Ewan Andreasen"
+                    data-phone="206-681-5536"
                     data-cal="">North Seattle</option>
                 <option value=""
-                    coord-name="Daniel Ramos III"
-                    coord-phone="206-513-3532"
+                    data-name="Daniel Ramos III"
+                    data-phone="206-513-3532"
                     data-cal="">Snoqualmie Valley</option>
                 <option value=""
-                    coord-name="Ben Mathewson"
-                    coord-phone="206-945-6775"
+                    data-name="Ben Mathewson"
+                    data-phone="206-945-6775"
                     data-cal="">South East King County</option>
                 <option value="https://doodle.com/sign-up-sheet/participate/91369666-53b7-4d1e-8d15-b34cae226bad/select"
                     data-cal="3918b19390785b1fcdfc070e9996120fbd4e8ee73b994191b9a37c20b1e611db@group.calendar.google.com">South King County</option>
                 <option value=""
-                    coord-name="Cathea Carey"
-                    coord-phone="206-809-5711"
+                    data-name="Cathea Carey"
+                    data-phone="206-809-5711"
                     data-cal="">South Seattle</option>
                 <!-- <option value=""
                     coord-name="Cathea Carey"
@@ -464,6 +464,29 @@
 </footer>
 
 <script>
+    // This script changes the Subregional Coordinator info on subregion selection
+    const regionMenu = document.getElementById('region-menu');
+    const coordBox = document.getElementById('coordinator-info');
+    const nameSpan = document.getElementById('coord-name');
+    const emailLink = document.getElementById('coord-phone');
+
+    regionMenu.addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        const name = selectedOption.getAttribute('data-coord');
+        const phone = selectedOption.getAttribute('data-phone');
+
+        if (name && phone) {
+            // Update the text and link
+            nameSpan.textContent = name;
+            phoneLink.textContent = phone;
+            
+            // Show the box
+            coordBox.style.display = 'block';
+        } else {
+            // Hide if the selected region has no coordinator data
+            coordBox.style.display = 'none';
+        }
+    });
     // This script changes the embedded calendar when the subregion is changed
     document.getElementById('region-menu').onchange = function() {
         var selectedOption = this.options[this.selectedIndex];

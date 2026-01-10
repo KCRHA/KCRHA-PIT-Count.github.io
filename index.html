@@ -287,6 +287,33 @@
             max-width: 90%;
             text-align: center;
         }
+
+        /* Set the format for the Subregional Coordinator contact information */
+        .coordinator-box {
+            text-align: center; /* Centers all text inside the box */
+            background-color: #fcfcfc;
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        
+        .coordinator-box p {
+            margin: 10px 0; /* Adds vertical spacing between the Name and Contact sections */
+        }
+        
+        .coordinator-box strong {
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05rem;
+        }
+        
+        #coord-name, #coord-phone {
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -473,8 +500,14 @@
             </select>
             <div id="coordinator-info" class="coordinator-box" style="display: none;">
                 <hr>
-                <p><strong>Subregional Coordinator:</strong> <span id="coord-name"></span></p>
-                <p><strong>Contact:</strong> <a href="" id="coord-phone"></a></p>
+                <p>
+                    <strong>Subregional Coordinator:</strong><br>
+                    <span id="coord-name"></span>
+                </p>
+                <p>
+                    <strong>Contact:</strong><br>
+                    <span id="coord-phone"></span>
+                </p>
             </div>
         </div>
 
@@ -510,14 +543,15 @@
         const regionName = selectedOption.text;
         const coordName = selectedOption.getAttribute('data-name');
         const coordPhone = selectedOption.getAttribute('data-phone');
-    
-        // 2. Update Coordinator Info
+
+        // 2. Update Coordinator Info (Centered with Line Breaks)
         const coordBox = document.getElementById('coordinator-info');
+        
         if (coordName && coordPhone) {
             document.getElementById('coord-name').textContent = coordName;
-            const phoneElem = document.getElementById('coord-phone');
-            phoneElem.textContent = coordPhone;
-            phoneElem.href = `tel:${coordPhone.replace(/\D/g,'')}`;
+            document.getElementById('coord-phone').textContent = coordPhone;
+            
+            // Display the box (CSS handles the centering)
             coordBox.style.display = 'block';
         } else {
             coordBox.style.display = 'none';

@@ -1,3 +1,11 @@
+<div style="display: flex; align-items: center; gap: 10px; background: #fff; padding: 10px; border-radius: 5px; border: 1px solid #d1d9e6; margin-bottom: 15px;">
+  <span style="height: 15px; width: 15px; background-color: #28a745; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #28a745;"></span>
+  <strong style="color: #28a745;">STATUS: ALL SITES OPERATIONAL</strong>
+</div>
+
+### Recent Updates
+* **Jan 12:** All hubs are open. Please remember to check in with your Site Lead upon arrival.
+
 # _General_ 
 ---
 ## Locating the Site Schedule
@@ -6,14 +14,6 @@ Please check the [site schedule calendar](https://kcrha.github.io/KCRHA-PIT-Coun
 
 # _Site-Specific_
 ---
-## Federal Way Day Center
-
-Federal Way Day Center (CCS) will be ceasing survey operations at 1530 today due to a volunteer shortage.
-<br>
-If you are able to take additional hours and can be onsite no later than 1230 today, we are accepting volunteers to backfill.
 
 # _Admin Notes_
 ---
-## TEST for Update Refresh (@ 1315)
-
-If you can read this, then we have successfully moved current updates from a tab to a section, and all the people rejoiced.

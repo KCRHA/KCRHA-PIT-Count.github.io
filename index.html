@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta name="robots" content="noindex">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,6 +81,25 @@
         }
         .tab-content.active {
             display: block;
+        }
+
+        /* Base style for the highlight button */
+        .nav-highlight {
+          background-color: #f0f7ff; /* A very soft blue */
+          color: #0056b3 !important; /* A darker blue for contrast */
+          padding: 6px 12px;
+          border-radius: 4px;
+          border: 1px solid #d0e3ff;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          text-decoration: none;
+        }
+        
+        /* Hover effect to make it feel interactive */
+        .nav-highlight:hover {
+          background-color: #0056b3;
+          color: #ffffff !important;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         /* Apply these to all links and buttons in the nav */
@@ -330,6 +350,7 @@
     <button class="tab-link" onclick="openTab(event, 'maps')">Hub Sites Map</button>
     <button class="tab-link" onclick="openTab(event, 'schedule')">Site Schedules</button>
     <a href="ice_response.html" target="_blank" class="tab-link ice-link">ICE Response Protocol</a>
+    <a href="/volunteer-resources" class="nav-highlight">Need Help?</a>
 </nav>
 
 <div class="container">

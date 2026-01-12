@@ -392,12 +392,30 @@
             <h2 style="color: var(--primary-blue); margin-top: 0;"><u><b>Updates, Weather Forecast and Notifications</b></u></h2>
             
             <!-- Adding a weather forecast widget -->
-            <div style="position: relative; width: 100%; padding-bottom: 100%; height: 0; overflow: hidden; border-radius: 8px; border: 1px solid #d1d9e6; background: white; margin-bottom: 1.5rem;">
+            <!-- <div style="position: relative; width: 100%; padding-bottom: 100%; height: 0; overflow: hidden; border-radius: 8px; border: 1px solid #d1d9e6; background: white; margin-bottom: 1.5rem;">
                 <iframe 
                     src="https://www.wunderground.com/forecast/us/wa/seattle"
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
                     scrolling="auto">
                 </iframe>
+            </div> -->
+
+            <!-- embed non-iframe widget from weatherwidget.io (cleaner) -->
+            <div class="weather-wrapper" style="position: relative; width: 100%; padding-bottom: 125%; height: 0; overflow: hidden; border-radius: 8px; border: 1px solid #d1d9e6; background: #172B69; margin-bottom: 1.5rem;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    <a class="weatherwidget-io" 
+                       href="https://forecast7.com/en/47d61n122d33/seattle/?unit=us" 
+                       data-label_1="SEATTLE" 
+                       data-label_2="WEATHER" 
+                       data-font="Arial" 
+                       data-icons="Climacons" 
+                       data-theme="original" 
+                       data-basecolor="#172B69" 
+                       data-highcolor="#F67951" 
+                       data-lowcolor="#C2E7E2" 
+                       data-suncolor="#FFD600" 
+                       data-cloudfill="#1B8477">SEATTLE WEATHER</a>
+                </div>
             </div>
             
             <!-- simple warning banner -->
@@ -631,6 +649,19 @@
         
             // Inject the stamp + the converted Markdown
             container.innerHTML = stamp + marked.parse(text);
+
+            // Re-initialize the Weather Widget
+            if (typeof __weatherwidget_init === 'function') {
+                __weatherwidget_init(); 
+            } else {
+                const scriptId = 'weatherwidget-io-js';
+                if (!document.getElementById(scriptId)) {
+                    const j = document.createElement('script');
+                    j.id = scriptId;
+                    j.src = 'https://weatherwidget.io/js/widget.min.js';
+                    document.body.appendChild(j);
+                }
+            }
         } catch (error) {
             container.innerHTML = "<p>Error loading documentation.</p>";
             console.error(error);

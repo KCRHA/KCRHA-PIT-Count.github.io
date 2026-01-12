@@ -392,14 +392,20 @@
             <h2 style="color: var(--primary-blue); margin-top: 0;"><u><b>Updates and Notifications</b></u></h2>
             <!-- Adding a weather forecast widget -->
             <div style="margin-bottom: 1.5rem; border-radius: 8px; overflow: hidden; border: 1px solid #d1d9e6; background: white;">
-                <a class="weatherwidget-io" href="https://forecast7.com/en/47061n12233/king-county/" data-label_1="KING COUNTY, WA" data-label_2="PIT COUNT WEATHER" data-font="Arial" data-icons="Climacons Animated" data-days="10" data-theme="pure" data-basecolor="white" data-accent="var(--accent-teal)" data-textcolor="var(--text-dark)" >KING COUNTY, WA PIT COUNT WEATHER</a>
-                <script>
-                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-                </script>
+                <a class="weatherwidget-io" href="https://forecast7.com/en/47061n12233/king-county/"
+                    data-label_1="King County, WA"
+                    data-label_2="PIT Count Forecast"
+                    data-font="Arial"
+                    data-icons="Climacons Animated"
+                    data-days="10"
+                    data-theme="pure"
+                    data-basecolor="white"
+                    data-accent="var(--accent-teal)"
+                    data-textcolor="var(--text-dark)">2026 PIT Count (King County, WA) Weather Forecast</a>
             </div>
             <!-- simple warning banner -->
             <p class="helper-text" style="text-align: center; margin-top: -10px;">
-                Note: Deployments may be adjusted if severe weather is forecasted.
+                Note: Shifts may be adjusted if severe weather is forecasted.
             </p>
             <div id="markdown-container" class="resource-card">
                 Loading content...
@@ -444,7 +450,7 @@
     <!-- Add Google map of Hub Sites for ease of navigation -->
     <div id="maps" class="tab-content">
         <h2>Hub Sites Map</h2>
-        <p>Use the interactive map below to locate regional resources and deployment hubs.</p>
+        <p>Use the interactive map below to locate regional resources and survey hubs.</p>
         <div class="map-container">
             <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1pR8ll32bitMux9RBMqWjToCY1oDPiug&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
         </div>
@@ -627,6 +633,19 @@
         
             // Inject the stamp + the converted Markdown
             container.innerHTML = stamp + marked.parse(text);
+
+            // --- FIX FOR WEATHER WIDGET ---
+            // This forces the weather widget script to run/re-run after the UI is ready
+            if (typeof __weatherwidget_init === 'function') {
+                __weatherwidget_init();
+            } else {
+                var js, fjs = document.getElementsByTagName('script')[0];
+                js = document.createElement('script');
+                js.id = 'weatherwidget-io-js';
+                js.src = 'https://weatherwidget.io/js/widget.min.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+            // ------------------------------
         } catch (error) {
             container.innerHTML = "<p>Error loading documentation.</p>";
             console.error(error);

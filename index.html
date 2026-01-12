@@ -390,6 +390,17 @@
         <br>
         <section id="notifications-section" style="background-color: #eef2ff; padding: 1.5rem; border-radius: 8px; border: 1px solid #d1d9e6;">
             <h2 style="color: var(--primary-blue); margin-top: 0;"><u><b>Updates and Notifications</b></u></h2>
+            <!-- Adding a weather forecast widget -->
+            <div style="margin-bottom: 1.5rem; border-radius: 8px; overflow: hidden; border: 1px solid #d1d9e6; background: white;">
+                <a class="weatherwidget-io" href="https://forecast7.com/en/47061n12233/king-county/" data-label_1="KING COUNTY, WA" data-label_2="PIT COUNT WEATHER" data-font="Arial" data-icons="Climacons Animated" data-days="10" data-theme="pure" data-basecolor="white" data-accent="var(--accent-teal)" data-textcolor="var(--text-dark)" >KING COUNTY, WA PIT COUNT WEATHER</a>
+                <script>
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+                </script>
+            </div>
+            <!-- simple warning banner -->
+            <p class="helper-text" style="text-align: center; margin-top: -10px;">
+                Note: Deployments may be adjusted if severe weather is forecasted.
+            </p>
             <div id="markdown-container" class="resource-card">
                 Loading content...
             </div>

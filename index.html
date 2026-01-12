@@ -85,11 +85,11 @@
 
         /* Base style for the highlight button */
         .nav-highlight {
-          background-color: #f0f7ff; /* A very soft blue */
-          color: #0056b3 !important; /* A darker blue for contrast */
+          background-color: var(--accent-teal); /* A very soft blue */
+          color: var(--primary-blue) !important; /* A darker blue for contrast */
           padding: 6px 12px;
           border-radius: 4px;
-          border: 1px solid #d0e3ff;
+          border: 1px solid var(--text-dark);
           font-weight: 600;
           transition: all 0.3s ease;
           text-decoration: none;
@@ -98,19 +98,21 @@
         /* Hover effect to make it feel interactive */
         .nav-highlight:hover {
           background-color: #0056b3;
-          color: #ffffff !important;
+          color: var(--text-white) !important;
           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         /* Apply these to all links and buttons in the nav */
         .tab-link {
-            display: inline-block; /* Crucial for links to accept padding/height */
+            display: inline-flex; /* Crucial for links to accept padding/height */
+            align-items: center;     /* Vertically centers text */
+            justify-content: center;  /* Horizontally centers text */
             text-decoration: none; /* Removes the underline from the <a> tag */
             appearance: none;      /* Removes default browser button styling */
             cursor: pointer;
             
             /* Ensure these match your existing button styles */
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             border: none; 
             background-color: none;
             color: var(--text-white);

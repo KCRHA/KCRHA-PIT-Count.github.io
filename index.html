@@ -448,9 +448,11 @@
             <a href="https://app.smartsheet.com/b/form/02f84ceb60eb4b7296dbcbcc9326e3b8"
                 target="_blank" style="color: var(--accent-teal); font-weight: bold;">Daily Hub Close-out Form →</a>
             <br>
-            <button class="cta-button" onclick="openTab(event, 'process-flow')" style="background-color: var(--primary-blue); cursor: pointer; border: none;">
+
+            <!-- Change 'a' back to 'button' if it breaks -->
+            <a class="cta-button" onclick="openTab(event, 'process-flow')" style="background-color: var(--primary-blue); cursor: pointer; border: none;">
                 View Survey Process Flow Chart →
-            </button>
+            </a>            
         </div>
     </div>
 
@@ -636,7 +638,7 @@
             </table>
             
             <div style="margin-top: 2rem; display: flex; gap: 1rem;">
-                <button class="cta-button" onclick="openTab(event, 'resources')">← Back to Resources</button>
+                <button class="cta-button" style="background-color: var(--primary-blue);" onclick="openTab(event, 'resources')">← Back to Resources</button>
                 <a href="./linked_resources/2026 Volunteer Training Manual_Final.pdf" class="cta-button" style="background-color: var(--primary-blue);" target="_blank">Download Full PDF Manual</a>
             </div>
         </div>

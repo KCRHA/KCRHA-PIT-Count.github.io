@@ -597,21 +597,57 @@
     <!-- Add hidden page for hub site traffic flowchart -->
     <div id="process-flow" class="tab-content">
         <h2>Hub Site Operations: Survey Process Flow</h2>
-        <p>This chart outlines the respondent's journey from arrival at the Hub Site to successful out-processing.</p>
+        <p>This section outlines the respondent's journey. Refer to the chart for a visual overview and the table below for specific roles and responsibilities.</p>
     
         <div class="resource-card" style="text-align: center; background: white;">
             <img src="./graphics/hub_site_flow.png" alt="Survey Process Flow Chart" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
         </div>
     
         <div class="resource-card">
-            <h3>Step-by-Step Instructions</h3>
-            <ol style="line-height: 1.8;">
-                <li><strong>Reception:</strong> Site Lead greets Respondent, verifies QR code against the RDS database, and escorts them to an available Surveyor.</li>
-                <li><strong>During Survey:</strong> Surveyor administers the questionnaire in private. Simultaneously, the Site Lead prepares the incentive package (gift cards, bus passes).</li>
-                <li><strong>Out-Processing:</strong> Surveyor hands off the Respondent to the Site Lead. Site Lead verifies survey completion, assists with card activation, and provides referral codes.</li>
-                <li><strong>Conclusion:</strong> Site Lead thanks the Respondent and records the transaction in the tracker.</li>
-            </ol>
-            <button class="cta-button" onclick="openTab(event, 'resources')">← Back to Resources</button>
+            <h3 style="margin-bottom: 1.5rem;">Operational Phase Responsibilities</h3>
+            <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <thead>
+                    <tr style="background-color: var(--primary-blue); color: white; text-align: left;">
+                        <th style="padding: 12px; border: 1px solid #ddd;">Phase</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Action Items</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Primary Lead</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold; background: #f9f9f9;">A. Reception</td>
+                        <td style="padding: 12px; border: 1px solid #ddd;">
+                            • Greet Respondent & take coupon<br>
+                            • Check QR code against RDS database<br>
+                            • Record initials on coupon
+                        </td>
+                        <td style="padding: 12px; border: 1px solid #ddd; color: var(--accent-teal); font-weight: bold;">Site Lead</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold; background: #f9f9f9;">B. During Survey</td>
+                        <td style="padding: 12px; border: 1px solid #ddd;">
+                            • Administer questionnaire (1-on-1)<br>
+                            • Prepare gift cards, bus passes, & referral coupons<br>
+                            • Log incentives in tracker
+                        </td>
+                        <td style="padding: 12px; border: 1px solid #ddd; color: var(--accent-teal); font-weight: bold;">Surveyor / Site Lead</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold; background: #f9f9f9;">C. Out-Processing</td>
+                        <td style="padding: 12px; border: 1px solid #ddd;">
+                            • Escort Respondent for hand-off<br>
+                            • Verify survey completion in app<br>
+                            • Print referral QR codes & assist with card activation
+                        </td>
+                        <td style="padding: 12px; border: 1px solid #ddd; color: var(--accent-teal); font-weight: bold;">Site Lead</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                <button class="cta-button" onclick="openTab(event, 'resources')">← Back to Resources</button>
+                <a href="./linked_resources/2026_Hub_Manual_Full.pdf" class="cta-button" style="background-color: var(--primary-blue);" target="_blank">Download Full PDF Manual</a>
+            </div>
         </div>
     </div>
 </div>

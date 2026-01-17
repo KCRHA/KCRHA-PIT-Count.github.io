@@ -46,7 +46,7 @@
             overflow: auto;
             border-bottom: 2px solid var(--light-gray);
             position: sticky;
-            top: 0;
+            top: 40px;
             z-index: 1000;
         }
 
@@ -349,7 +349,8 @@
             font-size: 0.9rem;
             font-weight: 500;
             border-bottom: 1px solid #f5c6cb;
-            position: relative;
+            position: sticky; /* Keep banner visible all the time */
+            top: 0;
             z-index: 2000; /* Stays above the sticky nav */
         }
         

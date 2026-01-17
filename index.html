@@ -339,10 +339,44 @@
             display: inline-block;
             margin-top: 5px;
         }
+
+        /* Crisis Line Banner Styling */
+        .crisis-banner {
+            background-color: #fce8e6; /* Soft, non-alarming light red/pink */
+            color: #b71c1c; /* Deep red for readability, but not "emergency" bright */
+            text-align: center;
+            padding: 10px 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-bottom: 1px solid #f5c6cb;
+            position: relative;
+            z-index: 2000; /* Stays above the sticky nav */
+        }
+        
+        .crisis-banner a {
+            color: #b71c1c;
+            text-decoration: underline;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        
+        .crisis-banner a:hover {
+            color: #7f0000;
+            text-decoration: none;
+        }
+        
+        /* Adjust header padding so the banner doesn't overlap content */
+        header {
+            padding-top: 1rem !important;
+        }
     </style>
 </head>
 <body>
-
+    <!-- Add a 'sticky' banner over the header with a link to crisis hotline -->
+    <div class="crisis-banner">
+        Need immediate support? The 24-Hour Crisis Line is available at 866-427-4747 or 
+        <a href="https://www.crisisconnections.org/24-hour-crisis-line/" target="_blank">visit Crisis Connections online</a>.
+    </div>
 <header>
     <img src="./logos/KCRHA-logo-lockup-full-color.png" alt="KCRHA Logo" class="header-logo">
     <h1>2026 Point-in-Time Count</h1>

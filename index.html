@@ -457,7 +457,9 @@
             <a href="https://app.smartsheet.com/b/form/02f84ceb60eb4b7296dbcbcc9326e3b8"
                 target="_blank" style="color: var(--accent-teal); font-weight: bold;">Daily Hub Close-out Form →</a>
             <br>
-            <a href="#" style="color: var(--accent-teal); font-weight: bold;">Hub Site Operations Manual →</a>
+            <button class="cta-button" onclick="openTab(event, 'process-flow')" style="background-color: var(--primary-blue); cursor: pointer; border: none;">
+                View Survey Process Flow Chart →
+            </button>
         </div>
     </div>
 
@@ -589,6 +591,27 @@
             <div class="calendar-container">
                 <iframe id="calendar-iframe" src="" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
             </div>
+        </div>
+    </div>
+    
+    <!-- Add hidden page for hub site traffic flowchart -->
+    <div id="process-flow" class="tab-content">
+        <h2>Hub Site Operations: Survey Process Flow</h2>
+        <p>This chart outlines the respondent's journey from arrival at the Hub Site to successful out-processing.</p>
+    
+        <div class="resource-card" style="text-align: center; background: white;">
+            <img src="./graphics/hub_site_flow.png" alt="Survey Process Flow Chart" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+        </div>
+    
+        <div class="resource-card">
+            <h3>Step-by-Step Instructions</h3>
+            <ol style="line-height: 1.8;">
+                <li><strong>Reception:</strong> Site Lead greets Respondent, verifies QR code against the RDS database, and escorts them to an available Surveyor.</li>
+                <li><strong>During Survey:</strong> Surveyor administers the questionnaire in private. Simultaneously, the Site Lead prepares the incentive package (gift cards, bus passes).</li>
+                <li><strong>Out-Processing:</strong> Surveyor hands off the Respondent to the Site Lead. Site Lead verifies survey completion, assists with card activation, and provides referral codes.</li>
+                <li><strong>Conclusion:</strong> Site Lead thanks the Respondent and records the transaction in the tracker.</li>
+            </ol>
+            <button class="cta-button" onclick="openTab(event, 'resources')">← Back to Resources</button>
         </div>
     </div>
 </div>

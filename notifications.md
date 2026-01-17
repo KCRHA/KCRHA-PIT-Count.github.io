@@ -6,14 +6,14 @@
 ### Recent Updates
 * **Jan 12:** All hubs are open. Please remember to check in with your Site Lead upon arrival.
 
-# _General_ 
+### _General_ 
 ---
-## Locating the Site Schedule
+#### Locating the Site Schedule
 
 Please check the [site schedule calendar](https://kcrha.github.io/KCRHA-PIT-Count.github.io/#schedule) for scheduled activity by site.
 
-# _Site-Specific_
+### _Site-Specific_
 ---
 
-# _Admin Notes_
+### _Admin Notes_
 ---

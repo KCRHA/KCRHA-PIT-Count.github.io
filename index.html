@@ -394,7 +394,6 @@
 </nav>
 
 <div class="container">
-    
     <div id="home" class="tab-content active">
         <h2>About the PIT Count</h2>
         <p>The <a href="https://kcrha.org/community-data/king-county-point-in-time-count/" style="color: var(--primary-blue); font-weight: bold;" target="_blank">Point-in-Time (PIT)</a> count is a count of sheltered and unsheltered people experiencing homelessness that takes place in late January.
@@ -478,6 +477,13 @@
         <div class="resource-card">
             <h3>For Site Leads</h3>
             <p>Essential resources for safe site management.</p>
+            
+            <!-- Daily briefing and checklist for management -->
+            <a href="javascript:void(0)" onclick="openTab(event, 'hub-ops')" style="color: var(--accent-teal); font-weight: bold;">
+                Daily Opening & Closing Checklist →
+            </a>
+
+            <!-- Links to smartsheet site management forms -->
             <a href="https://app.smartsheet.com/b/form/8e21239010584be4ac2d08b993c854ef"
                 target="_blank" style="color: var(--accent-teal); font-weight: bold;">Incident Report Form →</a>
             <br>
@@ -680,6 +686,43 @@
                 <a href="./linked_resources/2026 Volunteer Training Manual_Final.pdf" class="cta-button" style="background-color: var(--primary-blue);" target="_blank">Download Full PDF Manual</a>
             </div>
         </div>
+    </div>
+
+    <!-- hub sites daily operations instructions and brief -->
+    <div id="hub-ops" class="tab-content">
+        <h2>Hub Site Daily Operations</h2>
+        <p>Site Leads: Follow these steps every morning and evening to ensure data integrity and site safety.</p>
+    
+        <div class="resource-card" style="border-left-color: var(--accent-teal);">
+            <h3>☀️ Morning Opening Procedures</h3>
+            <ul style="line-height: 1.8;">
+                <li><strong>Arrival:</strong> Locate the secured supply box (refer to site-specific instructions for key/code).</li>
+                <li><strong>Inventory:</strong> Perform a visual count of gift cards, bus passes, and referral coupons. If supplies are low (less than 1 day's stock), contact your Subregional Coordinator immediately.</li>
+                <li><strong>Tech Set-up:</strong> Power on tablets and computers. Connect barcode printers and run a test print to ensure connectivity.</li>
+            </ul>
+        </div>
+    
+        <div style="background-color: #f0f4f8; border: 2px dashed var(--primary-blue); padding: 1.5rem; border-radius: 8px; margin: 20px 0;">
+            <h3 style="margin-top: 0; color: var(--primary-blue);">📢 Daily Volunteer Briefing (Read Aloud)</h3>
+            <p><em>"Welcome everyone. Thank you for being part of the 2026 PIT Count. Before we begin, three quick points:"</em></p>
+            <ul style="margin-bottom: 0;">
+                <li><strong>Safety & Restrooms:</strong> Restrooms are located [Location]. In an emergency, our exit path is [Path] and our rally point is [Location].</li>
+                <li><strong>Process:</strong> We use a 1-on-1 survey model. Once a respondent finishes, please escort them back to me for hand-off and incentive processing.</li>
+                <li><strong>Privacy:</strong> Please ensure surveys are conducted in the designated private areas to protect respondent confidentiality.</li>
+            </ul>
+        </div>
+    
+        <div class="resource-card" style="border-left-color: var(--primary-blue);">
+            <h3>🌙 Evening Closing Procedures</h3>
+            <ul style="line-height: 1.8;">
+                <li><strong>Incentive Audit:</strong> Ensure all distributed gift cards match the entries in the tracker.</li>
+                <li><strong>Volunteer Dismissal:</strong> Thank volunteers for their time and ensure they have signed out.</li>
+                <li><strong>Security:</strong> Power down electronics. Secure all supplies and the tracker inside the supply box. Lock the box/storage area.</li>
+                <li><strong>Reporting:</strong> Complete the <a href="https://app.smartsheet.com/b/form/02f84ceb60eb4b7296dbcbcc9326e3b8" target="_blank">Daily Hub Close-out Form</a> before leaving the site.</li>
+            </ul>
+        </div>
+        <!-- use 'a' tag instead of 'button' for formatting consistency -->
+        <a class="cta-button" onclick="openTab(event, 'resources')">← Back to Resources</a>
     </div>
 </div>
 

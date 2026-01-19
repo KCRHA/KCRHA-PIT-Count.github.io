@@ -744,43 +744,70 @@
     let calendar;
     let allShiftData = [];
     
-    // Initialize Calendar
+    // 1. Initialize Calendar immediately
     document.addEventListener('DOMContentLoaded', function() {
         const calendarEl = document.getElementById('calendar-render');
         calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'timeGridWeek', // Better for showing 10am-5pm shifts
-            headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek' },
+            initialView: 'timeGridWeek',
+            headerToolbar: { 
+                left: 'prev,next today', 
+                center: 'title', 
+                right: 'dayGridMonth,timeGridWeek' 
+            },
             slotMinTime: '08:00:00',
             slotMaxTime: '18:00:00',
-            allDaySlot: false
+            allDaySlot: false,
+            initialDate: '2026-01-26' // Start on the first day of PIT
         });
         calendar.render();
     
-        // Fetch your python-generated JSON
+        // 2. Load the JSON data
         fetch('shifts.json')
             .then(response => response.json())
-            .then(data => { allShiftData = data; });
+            .then(data => { 
+                allShiftData = data; 
+                console.log("Data loaded:", allShiftData.length, "shifts found.");
+            })
+            .catch(err => console.error("Error loading JSON:", err));
     });
     
-    // Update the existing change listener for your region-menu
+    // 3. Update logic for the region menu
     document.getElementById('region-menu').addEventListener('change', function() {
-        // 1. Get the name of the region selected (e.g., "Downtown Seattle")
-        const selectedRegion = this.options[this.selectedIndex].text.trim();
+        const selectedOption = this.options[this.selectedIndex];
+        const selectedRegion = selectedOption.text.trim();
         
-        // 2. Show the calendar container
+        // Show container
         document.getElementById('calendar-view').style.display = 'block';
         
-        // 3. Filter shifts where the 'subregion' matches the dropdown selection
+        // IMPORTANT: Tell the calendar to fix its size now that it's visible
+        setTimeout(() => {
+            calendar.updateSize();
+        }, 10);
+
+        // Filter the data
         const filteredShifts = allShiftData.filter(shift => 
             shift.extendedProps.subregion === selectedRegion
         );
         
-        // 4. Update the Calendar
+        // Clear and add new events
         calendar.removeAllEvents();
-        calendar.addEventSource(filteredShifts);
+        calendar.addEvents(filteredShifts); // Use addEvents for arrays
         
-        // 5. Jump to the first day of the PIT count
-        calendar.gotoDate('2026-01-26');
+        // Update Coordinator Info
+        const coordName = selectedOption.getAttribute('data-name');
+        const coordPhone = selectedOption.getAttribute('data-phone');
+        const coordBox = document.getElementById('coordinator-info');
+        
+        if (coordName) {
+            document.getElementById('coord-name').textContent = coordName;
+            document.getElementById('coord-phone').textContent = coordPhone;
+            coordBox.style.display = 'block';
+        }
+
+        // Update Doodle Link
+        const bookingBtn = document.getElementById('booking-button');
+        bookingBtn.href = selectedOption.value;
+        bookingBtn.innerText = `Sign up for ${selectedRegion} Shifts`;
     });
     
     // This script changes the Subregional Coordinator info on subregion selection

@@ -651,7 +651,8 @@
         <!-- TEST LIVE SHIFT CALENDAR -->
         <div id="calendar-view" style="margin-top: 20px; display: none;">
             <h4>Live Schedule View</h4>
-            <div id="calendar-render" style="height: 600px; background: white; padding: 10px; border-radius: 8px; border: 1px solid #ddd;"></div>
+            <div id="calendar-legend" style="margin-bottom: 10px; display: flex; flex-wrap: wrap; gap: 15px;"></div>
+            <div id="calendar-render" style="min-height: 600px; background: white; padding: 10px; border-radius: 8px; border: 1px solid #ddd;"></div>
         </div>
     </div>
     
@@ -791,21 +792,42 @@
     
     // 3. Update logic for the region menu
     document.getElementById('region-menu').addEventListener('change', function() {
-        const selectedRegion = this.options[this.selectedIndex].text.trim();
+        const selectedOption = this.options[this.selectedIndex];
+        const selectedRegion = selectedOption.text.trim();
         
-        // 1. Filter the data
+        // A. Show the container first
+        const calendarView = document.getElementById('calendar-view');
+        calendarView.style.display = 'block';
+    
+        // B. Update Coordinator Info
+        const coordName = selectedOption.getAttribute('data-name');
+        const coordPhone = selectedOption.getAttribute('data-phone');
+        const coordBox = document.getElementById('coordinator-info');
+        
+        if (coordName) {
+            document.getElementById('coord-name').textContent = coordName;
+            document.getElementById('coord-phone').textContent = coordPhone;
+            coordBox.style.display = 'block';
+        }
+    
+        // C. Update the Doodle Link
+        const bookingBtn = document.getElementById('booking-button');
+        bookingBtn.href = selectedOption.value;
+        bookingBtn.innerText = `Sign up for ${selectedRegion} Shifts`;
+    
+        // D. Filter the data
         const filteredShifts = allShiftData.filter(shift => 
-            shift.extendedProps.subregion === selectedRegion
+            shift.extendedProps && shift.extendedProps.subregion === selectedRegion
         );
     
-        // 2. Generate the Legend
+        // E. Generate the Legend
         const legendContainer = document.getElementById('calendar-legend');
-        legendContainer.innerHTML = ''; // Clear old legend
-        
-        // Get unique sites and their colors from the filtered data
+        legendContainer.innerHTML = '';
         const uniqueSites = {};
         filteredShifts.forEach(s => {
-            uniqueSites[s.extendedProps.site] = s.backgroundColor;
+            if (s.extendedProps.site) {
+                uniqueSites[s.extendedProps.site] = s.backgroundColor;
+            }
         });
     
         Object.keys(uniqueSites).forEach(siteName => {
@@ -817,11 +839,16 @@
             legendContainer.appendChild(item);
         });
     
-        // 3. Update Calendar
+        // F. Update Calendar
         calendar.removeAllEvents();
         calendar.addEventSource(filteredShifts);
-        calendar.gotoDate('2026-01-26');
-        setTimeout(() => { calendar.updateSize(); }, 10);
+        
+        // G. THE CRITICAL FIX: Recalculate size now that display is 'block'
+        setTimeout(() => {
+            calendar.render(); // Re-render to ensure it fills the newly visible space
+            calendar.updateSize();
+            calendar.gotoDate('2026-01-26');
+        }, 50);
     });
     
     // This script changes the Subregional Coordinator info on subregion selection

@@ -789,7 +789,7 @@
             headerToolbar: { 
                 left: 'prev,next today', 
                 center: 'title', 
-                right: 'dayGridMonth,timeGridWeek' 
+                right: 'dayGridMonth,timeGridWeek, timeGridDay'
             },
             slotMinTime: '08:00:00',
             slotMaxTime: '20:00:00',
@@ -806,11 +806,18 @@
                 const notes = info.event.extendedProps.notes || "No additional notes.";
         
                 // Creates the hover "bit"
-                info.el.setAttribute('title', 
+                info.el.setAttribute('title',
                     `Site: ${site}\n` +
                     `Requirement: ${vols} Volunteers\n` +
                     `Note: ${notes}`
                 );
+            },
+            // Add 'click' for events, for mobile (TEST)
+            eventClick: function(info) {
+                const site = info.event.extendedProps.site || "this site";
+                const notes = info.event.extendedProps.notes || "No extra notes.";
+                
+                alert(`Shift Details:\n\nSite: ${site}\nNotes: ${notes}`);
             }
         }); // End of Calendar Config
 

@@ -220,6 +220,21 @@
             font-weight: bold !important;
         }
         
+        /* This targets the event container on hover */
+        .fc-event:hover {
+            filter: brightness(90%); /* Subtle feedback that it's interactive */
+            cursor: help;
+        }
+        
+        /* Optional: Add a smooth transition */
+        .fc-event {
+            transition: transform 0.1s ease-in-out;
+        }
+        .fc-event:hover {
+            transform: scale(1.02);
+            z-index: 999; /* Ensure the hovered event is on top */
+        }
+                
         /* Styling for Markdown-injected content */
         #markdown-container {
             line-height: 1.8;

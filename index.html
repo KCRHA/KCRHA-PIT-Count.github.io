@@ -764,7 +764,9 @@
             </ul>
         </div>
         <!-- use 'a' tag instead of 'button' for formatting consistency -->
-        <a class="cta-button" onclick="openTab(event, 'resources')">← Back to Resources</a>
+        <a class="cta-button" onclick="openTab(event, 'resources')">
+            ← Back to Resources
+        </a>
     </div>
 </div>
 
@@ -783,13 +785,13 @@
         // Configuration Object
         calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'timeGridWeek',
-            eventOverlap: true,      
-            slotEventOverlap: false, 
-            eventDisplay: 'block',   
-            headerToolbar: { 
-                left: 'prev,next today', 
-                center: 'title', 
-                right: 'dayGridMonth,timeGridWeek, timeGridDay'
+            eventOverlap: true,
+            slotEventOverlap: false,
+            eventDisplay: 'block',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth, timeGridWeek, timeGridDay'
             },
             slotMinTime: '08:00:00',
             slotMaxTime: '20:00:00',
@@ -797,28 +799,28 @@
             initialDate: '2026-01-26',
             
             // THE HOVER FIX: This must be inside the configuration object
-            eventDidMount: function(info) {
-                info.el.style.whiteSpace = 'pre-wrap'; 
-                info.el.style.fontSize = '0.8rem';
+            // eventDidMount: function(info) {
+            //     info.el.style.whiteSpace = 'pre-wrap'; 
+            //     info.el.style.fontSize = '0.8rem';
         
-                const site = info.event.extendedProps.site || "N/A";
-                const vols = info.event.extendedProps.volunteers || "0";
-                const notes = info.event.extendedProps.notes || "No additional notes.";
+            //     const site = info.event.extendedProps.site || "N/A";
+            //     const vols = info.event.extendedProps.volunteers || "0";
+            //     const notes = info.event.extendedProps.notes || "No additional notes.";
         
-                // Creates the hover "bit"
-                info.el.setAttribute('title',
-                    `Site: ${site}\n` +
-                    `Requirement: ${vols} Volunteers\n` +
-                    `Note: ${notes}`
-                );
-            },
-            // Add 'click' for events, for mobile (TEST)
-            eventClick: function(info) {
-                const site = info.event.extendedProps.site || "this site";
-                const notes = info.event.extendedProps.notes || "No extra notes.";
+            //     // Creates the hover "bit"
+            //     info.el.setAttribute('title',
+            //         `Site: ${site}\n` +
+            //         `Requirement: ${vols} Volunteers\n` +
+            //         `Note: ${notes}`
+            //     );
+            // },
+            // // Add 'click' for events, for mobile (TEST)
+            // eventClick: function(info) {
+            //     const site = info.event.extendedProps.site || "this site";
+            //     const notes = info.event.extendedProps.notes || "No extra notes.";
                 
-                alert(`Shift Details:\n\nSite: ${site}\nNotes: ${notes}`);
-            }
+            //     alert(`Shift Details:\n\nSite: ${site}\nNotes: ${notes}`);
+            // }
         }); // End of Calendar Config
 
         calendar.render();

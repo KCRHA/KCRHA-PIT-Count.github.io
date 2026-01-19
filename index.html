@@ -9,6 +9,8 @@
     <!-- add a favicon for pro touch -->
     <link rel="icon" type="image/png" href="./logos/KCRHA-logo-brandmark-full-color.png?v=1">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- add library to support full calendar (JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
     <style>
         /* CSS STYLING */
         :root {
@@ -623,11 +625,17 @@
         </div>
         
         <!-- Display the calendar that corresponds to the selected subregion -->
-        <div id="calendar" style="margin-top: 20px; display: none;">
+        <!-- <div id="calendar" style="margin-top: 20px; display: none;">
             <h4>Live Schedule View</h4>
             <div class="calendar-container">
                 <iframe id="calendar-iframe" src="" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
             </div>
+        </div> -->
+
+        <!-- TEST LIVE SHIFT CALENDAR -->
+        <div id="calendar-view" style="margin-top: 20px; display: none;">
+            <h4>Live Schedule View</h4>
+            <div id="calendar-render" style="height: 600px; background: white; padding: 10px; border-radius: 8px; border: 1px solid #ddd;"></div>
         </div>
     </div>
     
@@ -696,7 +704,7 @@
         <p>Site Leads: Follow these steps every morning and evening to ensure data integrity and site safety.</p>
     
         <div class="resource-card" style="border-left-color: var(--accent-teal);">
-            <h3>☀️ Morning Opening Procedures</h3>
+            <h3>Site Opening Procedures</h3>
             <ul style="line-height: 1.8;">
                 <li><strong>Arrival:</strong> Locate the secured supply box (refer to site-specific instructions for key/code).</li>
                 <li><strong>Inventory:</strong> Perform a visual count of gift cards, bus passes, and referral coupons. If supplies are low (less than 1 day's stock), contact your Subregional Coordinator immediately.</li>
@@ -705,17 +713,17 @@
         </div>
     
         <div style="background-color: #f0f4f8; border: 2px dashed var(--primary-blue); padding: 1.5rem; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0; color: var(--primary-blue);">📢 Daily Volunteer Briefing (Read Aloud)</h3>
-            <p><em>"Welcome everyone. Thank you for being part of the 2026 PIT Count. Before we begin, three quick points:"</em></p>
+            <h3 style="margin-top: 0; color: var(--primary-blue);">Daily Volunteer Briefing (Template)</h3>
+            <p><em>"Welcome everyone! And thank you for being part of the 2026 PIT Count. Before we begin, some quick admin points:"</em></p>
             <ul style="margin-bottom: 0;">
                 <li><strong>Safety & Restrooms:</strong> Restrooms are located [Location]. In an emergency, our exit path is [Path] and our rally point is [Location].</li>
                 <li><strong>Process:</strong> We use a 1-on-1 survey model. Once a respondent finishes, please escort them back to me for hand-off and incentive processing.</li>
-                <li><strong>Privacy:</strong> Please ensure surveys are conducted in the designated private areas to protect respondent confidentiality.</li>
+                <li><strong>Privacy:</strong> Please ensure surveys are conducted in the designated private areas to protect respondent confidentiality. White noise machines may be available, which will help provide some privacy.</li>
             </ul>
         </div>
     
         <div class="resource-card" style="border-left-color: var(--primary-blue);">
-            <h3>🌙 Evening Closing Procedures</h3>
+            <h3>Site Closing Procedures</h3>
             <ul style="line-height: 1.8;">
                 <li><strong>Incentive Audit:</strong> Ensure all distributed gift cards match the entries in the tracker.</li>
                 <li><strong>Volunteer Dismissal:</strong> Thank volunteers for their time and ensure they have signed out.</li>
@@ -733,47 +741,86 @@
 </footer>
 
 <script>
-    // This script changes the Subregional Coordinator info on subregion selection
-    document.getElementById('region-menu').addEventListener('change', function() {
-        const selectedOption = this.options[this.selectedIndex];
-        
-        // 1. Extract all data
-        const doodleUrl = selectedOption.value;
-        const calendarId = selectedOption.getAttribute('data-cal');
-        const regionName = selectedOption.text;
-        const coordName = selectedOption.getAttribute('data-name');
-        const coordPhone = selectedOption.getAttribute('data-phone');
-
-        // 2. Update Coordinator Info (Centered with Line Breaks)
-        const coordBox = document.getElementById('coordinator-info');
-        
-        if (coordName && coordPhone) {
-            document.getElementById('coord-name').textContent = coordName;
-            document.getElementById('coord-phone').textContent = coordPhone;
-            
-            // Display the box (CSS handles the centering)
-            coordBox.style.display = 'block';
-        } else {
-            coordBox.style.display = 'none';
-        }
+    let calendar;
+    let allShiftData = [];
     
-        // 3. Update Calendar and Button
-        if (calendarId) {
-            const container = document.getElementById('calendar');
-            const iframe = document.getElementById('calendar-iframe');
-            const bookingBtn = document.getElementById('booking-button');
-            
-            container.style.display = 'block';
-            bookingBtn.href = doodleUrl || "#";
-            bookingBtn.innerText = `Manage Site Sign-up for ${regionName} on Doodle`;
-            
-            // Use a template literal for the URL to make it readable
-            const embedUrl = `https://calendar.google.com/calendar/embed?src=${encodeURIComponent(calendarId)}&ctz=America%2FLos_Angeles&mode=WEEK&dates=20260125/20260207&showTitle=0&showPrint=0&showTabs=0`;
-            
-            iframe.src = embedUrl;
-            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
+    // Initialize Calendar
+    document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar-render');
+        calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'timeGridWeek', // Better for showing 10am-5pm shifts
+            headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek' },
+            slotMinTime: '08:00:00',
+            slotMaxTime: '18:00:00',
+            allDaySlot: false
+        });
+        calendar.render();
+    
+        // Fetch your python-generated JSON
+        fetch('shifts.json')
+            .then(response => response.json())
+            .then(data => { allShiftData = data; });
     });
+    
+    // Update the existing change listener for your region-menu
+    document.getElementById('region-menu').addEventListener('change', function() {
+        const selectedSite = this.options[this.selectedIndex].text.trim();
+        
+        // Show the calendar container
+        document.getElementById('calendar-view').style.display = 'block';
+        
+        // Filter shifts for the selected site
+        const filteredShifts = allShiftData.filter(shift => shift.extendedProps.site === selectedSite);
+        
+        // Refresh Calendar
+        calendar.removeAllEvents();
+        calendar.addEventSource(filteredShifts);
+        
+        // Set date to the start of the count
+        calendar.gotoDate('2026-01-26');
+    });
+    
+    // This script changes the Subregional Coordinator info on subregion selection
+    // document.getElementById('region-menu').addEventListener('change', function() {
+    //     const selectedOption = this.options[this.selectedIndex];
+        
+    //     // 1. Extract all data
+    //     const doodleUrl = selectedOption.value;
+    //     const calendarId = selectedOption.getAttribute('data-cal');
+    //     const regionName = selectedOption.text;
+    //     const coordName = selectedOption.getAttribute('data-name');
+    //     const coordPhone = selectedOption.getAttribute('data-phone');
+
+    //     // 2. Update Coordinator Info (Centered with Line Breaks)
+    //     const coordBox = document.getElementById('coordinator-info');
+        
+    //     if (coordName && coordPhone) {
+    //         document.getElementById('coord-name').textContent = coordName;
+    //         document.getElementById('coord-phone').textContent = coordPhone;
+            
+    //         // Display the box (CSS handles the centering)
+    //         coordBox.style.display = 'block';
+    //     } else {
+    //         coordBox.style.display = 'none';
+    //     }
+    
+    //     // 3. Update Calendar and Button
+    //     if (calendarId) {
+    //         const container = document.getElementById('calendar');
+    //         const iframe = document.getElementById('calendar-iframe');
+    //         const bookingBtn = document.getElementById('booking-button');
+            
+    //         container.style.display = 'block';
+    //         bookingBtn.href = doodleUrl || "#";
+    //         bookingBtn.innerText = `Manage Sign-up for ${regionName} on Doodle`;
+            
+    //         // Use a template literal for the URL to make it readable
+    //         const embedUrl = `https://calendar.google.com/calendar/embed?src=${encodeURIComponent(calendarId)}&ctz=America%2FLos_Angeles&mode=WEEK&dates=20260125/20260207&showTitle=0&showPrint=0&showTabs=0`;
+            
+    //         iframe.src = embedUrl;
+    //         container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    //     }
+    // });
     // Add script to convert markdown (updates and notifications) to HTML on the fly
     async function loadMarkdown() {
         const container = document.getElementById('markdown-container');

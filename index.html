@@ -764,19 +764,22 @@
     
     // Update the existing change listener for your region-menu
     document.getElementById('region-menu').addEventListener('change', function() {
-        const selectedSite = this.options[this.selectedIndex].text.trim();
+        // 1. Get the name of the region selected (e.g., "Downtown Seattle")
+        const selectedRegion = this.options[this.selectedIndex].text.trim();
         
-        // Show the calendar container
+        // 2. Show the calendar container
         document.getElementById('calendar-view').style.display = 'block';
         
-        // Filter shifts for the selected site
-        const filteredShifts = allShiftData.filter(shift => shift.extendedProps.site === selectedSite);
+        // 3. Filter shifts where the 'subregion' matches the dropdown selection
+        const filteredShifts = allShiftData.filter(shift => 
+            shift.extendedProps.subregion === selectedRegion
+        );
         
-        // Refresh Calendar
+        // 4. Update the Calendar
         calendar.removeAllEvents();
         calendar.addEventSource(filteredShifts);
         
-        // Set date to the start of the count
+        // 5. Jump to the first day of the PIT count
         calendar.gotoDate('2026-01-26');
     });
     

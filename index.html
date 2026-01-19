@@ -791,7 +791,7 @@
         
         // Clear and add new events
         calendar.removeAllEvents();
-        calendar.addEvents(filteredShifts); // Use addEvents for arrays
+        calendar.addEventSource(filteredShifts); // Use addEvents for arrays
         
         // Update Coordinator Info
         const coordName = selectedOption.getAttribute('data-name');

@@ -803,6 +803,23 @@
                 console.log("Data loaded:", allShiftData.length, "shifts found.");
             })
             .catch(err => console.error("Error loading JSON:", err));
+        eventDidMount: function(info) {
+            // 1. Fix the text wrapping for narrow columns
+            info.el.style.whiteSpace = 'pre-wrap'; 
+            info.el.style.fontSize = '0.8rem';
+    
+            // 2. Create the Hover Content
+            const site = info.event.extendedProps.site;
+            const vols = info.event.extendedProps.volunteers;
+            const notes = info.event.extendedProps.notes || "No additional notes.";
+    
+            // 3. Set the 'title' attribute (this creates the native browser tooltip)
+            info.el.setAttribute('title', 
+                `${site}\n` +
+                `Requirement: ${vols} Volunteers\n` +
+                `Note: ${notes}`
+            );
+        }
     });
     
     // 3. Update logic for the region menu

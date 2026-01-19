@@ -779,10 +779,13 @@
     // 1. Initialize Calendar immediately
     document.addEventListener('DOMContentLoaded', function() {
         const calendarEl = document.getElementById('calendar-render');
+        
+        // Configuration Object
         calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'timeGridWeek',eventOverlap: true,      // Allow them to sit side-by-side
-            slotEventOverlap: false, // Prevents them from hiding behind each other
-            eventDisplay: 'block',   // Ensures the background color fills the box
+            initialView: 'timeGridWeek',
+            eventOverlap: true,      
+            slotEventOverlap: false, 
+            eventDisplay: 'block',   
             headerToolbar: { 
                 left: 'prev,next today', 
                 center: 'title', 
@@ -791,8 +794,26 @@
             slotMinTime: '08:00:00',
             slotMaxTime: '20:00:00',
             allDaySlot: false,
-            initialDate: '2026-01-26' // Start on the first day of PIT
-        });
+            initialDate: '2026-01-26',
+            
+            // THE HOVER FIX: This must be inside the configuration object
+            eventDidMount: function(info) {
+                info.el.style.whiteSpace = 'pre-wrap'; 
+                info.el.style.fontSize = '0.8rem';
+        
+                const site = info.event.extendedProps.site || "N/A";
+                const vols = info.event.extendedProps.volunteers || "0";
+                const notes = info.event.extendedProps.notes || "No additional notes.";
+        
+                // Creates the hover "bit"
+                info.el.setAttribute('title', 
+                    `Site: ${site}\n` +
+                    `Requirement: ${vols} Volunteers\n` +
+                    `Note: ${notes}`
+                );
+            }
+        }); // End of Calendar Config
+
         calendar.render();
     
         // 2. Load the JSON data
@@ -803,24 +824,7 @@
                 console.log("Data loaded:", allShiftData.length, "shifts found.");
             })
             .catch(err => console.error("Error loading JSON:", err));
-        eventDidMount: function(info) {
-            // 1. Fix the text wrapping for narrow columns
-            info.el.style.whiteSpace = 'pre-wrap'; 
-            info.el.style.fontSize = '0.8rem';
-    
-            // 2. Create the Hover Content
-            const site = info.event.extendedProps.site;
-            const vols = info.event.extendedProps.volunteers;
-            const notes = info.event.extendedProps.notes || "No additional notes.";
-    
-            // 3. Set the 'title' attribute (this creates the native browser tooltip)
-            info.el.setAttribute('title', 
-                `${site}\n` +
-                `Requirement: ${vols} Volunteers\n` +
-                `Note: ${notes}`
-            );
-        }
-    });
+    }); // End of DOMContentLoaded
     
     // 3. Update logic for the region menu
     document.getElementById('region-menu').addEventListener('change', function() {

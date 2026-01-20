@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Opening Site Resource...</title>
+</head>
+<body>
+    <p>Redirecting to site brochure...</p>
+    <script>
+        // 1. Get the site name from the URL
+        const params = new URLSearchParams(window.location.search);
+        const site = params.get('site');
+
+        if (site) {
+            // 2. Format the name to match your PDF filenames
+            // Example: "Downtown Seattle" -> "downtown_seattle.pdf"
+            const fileName = site.toLowerCase().replace(/\s+/g, '_');
+            const pdfPath = `./brochures/${fileName}.pdf`;
+
+            // 3. Open the PDF in a new tab
+            window.open(pdfPath, '_blank');
+
+            // 4. Send the user back to the Map page so they don't get stuck on a blank screen
+            window.location.href = "./index.html#maps";
+        }
+    </script>
+</body>
+</html>

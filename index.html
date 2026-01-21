@@ -539,7 +539,7 @@
         </div>
     </div>
 
-    <!-- Add Google calendar for site schedule mgmt -->
+    <!-- Add calendar for site schedule mgmt -->
     <div id="schedule" class="tab-content">
         <h2>Volunteer/ Site Schedules</h2>
         
@@ -797,36 +797,12 @@
             slotMaxTime: '20:00:00',
             allDaySlot: false,
             initialDate: '2026-01-26',
-            
-            // THE HOVER FIX: This must be inside the configuration object
-            // eventDidMount: function(info) {
-            //     info.el.style.whiteSpace = 'pre-wrap'; 
-            //     info.el.style.fontSize = '0.8rem';
-        
-            //     const site = info.event.extendedProps.site || "N/A";
-            //     const vols = info.event.extendedProps.volunteers || "0";
-            //     const notes = info.event.extendedProps.notes || "No additional notes.";
-        
-            //     // Creates the hover "bit"
-            //     info.el.setAttribute('title',
-            //         `Site: ${site}\n` +
-            //         `Requirement: ${vols} Volunteers\n` +
-            //         `Note: ${notes}`
-            //     );
-            // },
-            // // Add 'click' for events, for mobile (TEST)
-            // eventClick: function(info) {
-            //     const site = info.event.extendedProps.site || "this site";
-            //     const notes = info.event.extendedProps.notes || "No extra notes.";
-                
-            //     alert(`Shift Details:\n\nSite: ${site}\nNotes: ${notes}`);
-            // }
         }); // End of Calendar Config
 
         calendar.render();
     
         // 2. Load the JSON data
-        fetch('schedule.json')
+        fetch('schedule.json?v=1') // UPDATE THIS VERSION TAG TO ENSURE FRESH CALENDAR DISPLAY
             .then(response => response.json())
             .then(data => { 
                 allShiftData = data; 
@@ -896,47 +872,6 @@
         }, 50);
     });
     
-    // This script changes the Subregional Coordinator info on subregion selection
-    // document.getElementById('region-menu').addEventListener('change', function() {
-    //     const selectedOption = this.options[this.selectedIndex];
-        
-    //     // 1. Extract all data
-    //     const doodleUrl = selectedOption.value;
-    //     const calendarId = selectedOption.getAttribute('data-cal');
-    //     const regionName = selectedOption.text;
-    //     const coordName = selectedOption.getAttribute('data-name');
-    //     const coordPhone = selectedOption.getAttribute('data-phone');
-
-    //     // 2. Update Coordinator Info (Centered with Line Breaks)
-    //     const coordBox = document.getElementById('coordinator-info');
-        
-    //     if (coordName && coordPhone) {
-    //         document.getElementById('coord-name').textContent = coordName;
-    //         document.getElementById('coord-phone').textContent = coordPhone;
-            
-    //         // Display the box (CSS handles the centering)
-    //         coordBox.style.display = 'block';
-    //     } else {
-    //         coordBox.style.display = 'none';
-    //     }
-    
-    //     // 3. Update Calendar and Button
-    //     if (calendarId) {
-    //         const container = document.getElementById('calendar');
-    //         const iframe = document.getElementById('calendar-iframe');
-    //         const bookingBtn = document.getElementById('booking-button');
-            
-    //         container.style.display = 'block';
-    //         bookingBtn.href = doodleUrl || "#";
-    //         bookingBtn.innerText = `Manage Sign-up for ${regionName} on Doodle`;
-            
-    //         // Use a template literal for the URL to make it readable
-    //         const embedUrl = `https://calendar.google.com/calendar/embed?src=${encodeURIComponent(calendarId)}&ctz=America%2FLos_Angeles&mode=WEEK&dates=20260125/20260207&showTitle=0&showPrint=0&showTabs=0`;
-            
-    //         iframe.src = embedUrl;
-    //         container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    //     }
-    // });
     // Add script to convert markdown (updates and notifications) to HTML on the fly
     async function loadMarkdown() {
         const container = document.getElementById('markdown-container');

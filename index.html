@@ -7,7 +7,7 @@
     <title>2026 Point-in-Time Count | Volunteer Portal</title>
 
     <!-- add a favicon for pro touch -->
-    <link rel="icon" type="image/png" href="./logos/KCRHA-logo-brandmark-full-color.png?v=1">
+    <link rel="icon" type="image/png" href="./logos/KCRHA-logo-brandmark-full-color.png?v=2">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- add library to support full calendar (JS) -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
@@ -802,7 +802,7 @@
         calendar.render();
     
         // 2. Load the JSON data
-        fetch('schedule.json?v=2') // UPDATE THIS VERSION TAG TO ENSURE FRESH CALENDAR DISPLAY
+        fetch('schedule.json?v=3') // UPDATE THIS VERSION TAG TO ENSURE FRESH CALENDAR DISPLAY
             .then(response => response.json())
             .then(data => { 
                 allShiftData = data; 

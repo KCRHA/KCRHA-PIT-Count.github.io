@@ -9,7 +9,7 @@ Hosts the Javascript, HTML, and CSS scripts for the PIT Count volunteer coordina
 Contains links (redirect to new tab) to
 <ul>
   <li>
-    <a href="https://rds-test-bwdfb4akakaugcc9.westus2-01.azurewebsites.net/login" target="_blank">
+    <a href="www.pit2026rds.com" target="_blank">
       Survey App
     </a> and
   </li>
@@ -30,6 +30,7 @@ Embedded
   Google Map of Hub Sites
 </a>
 , allowing for easy interface between location and directions for the user.
+
 
 
 

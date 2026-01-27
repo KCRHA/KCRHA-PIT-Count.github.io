@@ -4,13 +4,19 @@
 </div>
 
 ### Recent Updates
-* **Jan 12:** All hubs are open. Please remember to check in with your Site Lead upon arrival.
+* **Jan 27:** All hubs are open. Please remember to check in with your Site Lead upon arrival.
 
 ### _General_ 
 ---
-#### Locating the Site Schedule
+#### Managing Printer Issues
 
-Please check the [site schedule calendar](https://kcrha.github.io/KCRHA-PIT-Count.github.io/#schedule) for scheduled activity by site.
+We are currently working to solve our barcode printer issues so that every site is able to print from any device.
+
+Until we have a full solution, please check with your Hub Lead for guidance, and if needed, _clearly_ fill in the referral barcode numbers using a pen or permanent marker.
+
+It is essential that the alphanumeric codes are _clear_ and _legible_. 
+
+Thanks for all you are doing!
 
 ### _Site-Specific_
 ---

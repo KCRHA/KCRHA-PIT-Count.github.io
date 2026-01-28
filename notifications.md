@@ -8,15 +8,30 @@
 
 ### _General_ 
 ---
-#### Managing Printer Issues
+#### Setting up Printer Connections and Troubleshooting
 
-We are currently working to solve our barcode printer issues so that every site is able to print from any device.
+_Disable Auto-Power Off_
 
-Until we have a full solution, please check with your Hub Lead for guidance, and if needed, _clearly_ fill in the referral barcode numbers using a pen or permanent marker.
+1. Press the _Back_ button multiple times until you return to the home screen.
+2. Press _Menu_ on the printer and use the down arrow to navigate to WLAN, then press _OK_.
+3. Highlight WLAN (_On/Off_) and press _OK_, select On, then press _OK_.
 
-It is essential that the alphanumeric codes are _clear_ and _legible_. 
+_Enable WiFi Mode_
 
-Thanks for all you are doing!
+1. Return to the WLAN settings, highlight _Network Mode_, then press _OK_.
+2. Choose Infrastructure Mode and press OK.
+3. Press the down arrow to select _Infra Manual_ Setting, then press _OK_. The printer will search for available WiFi networks.
+4. Use the _up/down_ arrows to highlight your network, then press _OK_.
+5. Use the _up_, _down_, and _Menu_ buttons to type your WiFi password, then press _OK_ to confirm.
+6. If successful, the printer will display _Successful_!
+
+_Troubleshooting Connection Issues_
+
+1. Press the _Back_ button multiple times until you return to the home screen.
+2. Press _Menu_, use the _up/down_ arrows to select _Administration_, then press _OK_.
+3. Scroll down to Reset and press _OK_.
+4. Select _Network Reset_ and press _OK_.
+5. Highlight _Reset_ and press _OK_ to confirm.
 
 ### _Site-Specific_
 ---

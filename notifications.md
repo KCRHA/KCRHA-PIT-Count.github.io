@@ -10,13 +10,13 @@
 ---
 #### Setting up Printer Connections and Troubleshooting
 
-_Disable Auto-Power Off_
+_Enable WiFi_
 
 1. Press the _Back_ button multiple times until you return to the home screen.
 2. Press _Menu_ on the printer and use the down arrow to navigate to WLAN, then press _OK_.
 3. Highlight WLAN (_On/Off_) and press _OK_, select On, then press _OK_.
 
-_Enable WiFi Mode_
+_Connect Through Infrastructure Mode_
 
 1. Return to the WLAN settings, highlight _Network Mode_, then press _OK_.
 2. Choose Infrastructure Mode and press OK.
@@ -29,7 +29,7 @@ _Troubleshooting Connection Issues_
 
 1. Press the _Back_ button multiple times until you return to the home screen.
 2. Press _Menu_, use the _up/down_ arrows to select _Administration_, then press _OK_.
-3. Scroll down to Reset and press _OK_.
+3. Scroll down to _Reset_ and press _OK_.
 4. Select _Network Reset_ and press _OK_.
 5. Highlight _Reset_ and press _OK_ to confirm.
 
